@@ -2,8 +2,10 @@ import java.io.*;
 
 public class Maintest {
     public static void main(String[] args) throws IOException {
-        Calculator calculator = new Calculator();
+        TypeTag[] typeTags = new TypeTag[15];
+        Calculator calculator = new Calculator(typeTags);
         UserInfo[] userInfo = new UserInfo[100000];
+
         FileReader file = new FileReader("C:\\Users\\Buaa-Aladdin\\Documents\\train.csv");
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
@@ -18,7 +20,7 @@ public class Maintest {
     }
 }
 
-class Output{
+class Output {
     public Output(UserInfo[] userInfos) throws IOException {
         FileWriter fileWriter = new FileWriter("C:\\result.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

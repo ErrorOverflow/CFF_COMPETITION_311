@@ -3,21 +3,39 @@ import java.util.Vector;
 public class Calculator {
     public Vector<Integer> current_type = new Vector<>(100);
 
-    public type_89016252 type_89016252;
-    public type_89016253 type_89016253;
-    public type_89016259 type_89016259;
-    public type_89950166 type_89950166;
-    public type_89950167 type_89950167;
-    public type_89950168 type_89950168;
-    public type_90063345 type_90063345;
-    public type_90109916 type_90109916;
-    public type_90155946 type_90155946;
-    public type_99104722 type_99104722;
-    public type_99999825 type_99999825;
-    public type_99999826 type_99999826;
-    public type_99999827 type_99999827;
-    public type_99999828 type_99999828;
-    public type_99999830 type_99999830;
+    public TypeTag type_89016252;
+    public TypeTag type_89016253;
+    public TypeTag type_89016259;
+    public TypeTag type_89950166;
+    public TypeTag type_89950167;
+    public TypeTag type_89950168;
+    public TypeTag type_90063345;
+    public TypeTag type_90109916;
+    public TypeTag type_90155946;
+    public TypeTag type_99104722;
+    public TypeTag type_99999825;
+    public TypeTag type_99999826;
+    public TypeTag type_99999827;
+    public TypeTag type_99999828;
+    public TypeTag type_99999830;
+
+    public Calculator(TypeTag[] mid){
+        this.type_89016252=mid[0];
+        this.type_89016253=mid[1];
+        this.type_89016259=mid[2];
+        this.type_89950166=mid[3];
+        this.type_89950167=mid[4];
+        this.type_89950168=mid[5];
+        this.type_90063345=mid[6];
+        this.type_90109916=mid[7];
+        this.type_90155946=mid[8];
+        this.type_99104722=mid[9];
+        this.type_99999825=mid[10];
+        this.type_99999826=mid[11];
+        this.type_99999827=mid[12];
+        this.type_99999828=mid[13];
+        this.type_99999830=mid[14];
+    }
 
     public void addCureentType(int i){
         if(this.current_type.contains(new Integer(i))){
