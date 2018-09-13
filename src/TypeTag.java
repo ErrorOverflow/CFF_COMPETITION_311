@@ -4,19 +4,19 @@ public class TypeTag {
     public float[] month_traffic_record=new float[100000];
     public float month_traffic_average;
     public int num;
+    public double age_average;
+    public double local_caller_time;
 
     public TypeTag(int i) {
         this.tag = i;
         this.num=0;
+        this.age_average=0;
+        this.local_caller_time=0;
     }
 
-    public void addGender(int i,float j) {
-        if (i == 1) {
-            gender[0]++;
-        } else if (i == 2) {
-            gender[1]++;
-        }
-        this.month_traffic_record[this.num++]=j;
+    public void add(float i){
+        this.num++;
+        this.local_caller_time+=i;
     }
 
     public int[] getGender() {
@@ -32,5 +32,13 @@ public class TypeTag {
             month_traffic_average+=month_traffic_record[i];
         }
         return (month_traffic_average/num);
+    }
+
+    public double getAge_average() {
+        return (age_average/num);
+    }
+
+    public double getLocal_caller_time() {
+        return local_caller_time/num;
     }
 }

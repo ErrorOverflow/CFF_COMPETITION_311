@@ -26,41 +26,74 @@ public class Maintest {
         FileReader file = new FileReader("C:\\Users\\Buaa-Aladdin\\Documents\\train.csv");
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
-        int i = 0;
+        /*int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
             userInfo[i] = new UserInfo(line, calculator);
         }
         for (int j = 0; j < 15; j++) {
-            System.out.println(typeTags[j].getTag() + " " + typeTags[j].getGender()[0] + " " + typeTags[j].getGender()[1]
-                    + " " + typeTags[j].getMonth_traffic_average());
-        }
+            System.out.println(typeTags[j].getTag() + " " + typeTags[j].getLocal_caller_time());
+        }*/
         new Output(userInfo);
     }
 }
 
 class Output {
-    public Output(UserInfo[] userInfos) throws IOException {
-        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\test.csv");
-        FileWriter fileWriter = new FileWriter("C:\\result.csv");
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String readline;
-        bufferedWriter.write("user_id,predict\n");
-        readline = bufferedReader.readLine();
-        while ((readline = bufferedReader.readLine()) != null) {
-            String[] s = readline.split(",");
-            bufferedWriter.write(s[25]);
-            bufferedWriter.write(",");
-            if (Float.valueOf(s[7]) == 0) {
-                bufferedWriter.write("99104722");
-            } else{
-                bufferedWriter.write("89016253");
+    public Output(UserInfo[] userInfos) {
+        try{
+            FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\test.csv");
+            FileWriter fileWriter = new FileWriter("C:\\result.csv");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String readline;
+            bufferedWriter.write("user_id,predict\n");
+            readline = bufferedReader.readLine();
+            while ((readline = bufferedReader.readLine()) != null) {
+                String[] s = readline.split(",");
+                bufferedWriter.write(s[25]);
+                bufferedWriter.write(",");
+                if (Float.valueOf(s[7]) == 0) {
+                    bufferedWriter.write("99104722");
+                } else if (Float.valueOf(s[7]) <= 200) {
+                    if (Float.valueOf(s[17]) < 42.5) {
+                        bufferedWriter.write("90063345");
+                    } else {
+                        bufferedWriter.write("90155946");
+                    }
+                } else if (Float.valueOf(s[7]) <= 700) {
+                    bufferedWriter.write("89016252");
+                } else if (Float.valueOf(s[7]) <= 1400) {
+                    if (Float.valueOf(s[17]) > 50) {
+                        bufferedWriter.write("99999830");
+                    } else {
+                        bufferedWriter.write("89950168");
+                    }
+                } else if (Float.valueOf(s[7]) <= 2500) {
+                    if (Float.valueOf(s[17]) > 120) {
+                        bufferedWriter.write("99999828");
+                    } else if (Float.valueOf(s[17]) > 75) {
+                        bufferedWriter.write("89950167");
+                    } else if (Float.valueOf(s[17]) > 57) {
+                        bufferedWriter.write("89950166");
+                    } else {
+                        bufferedWriter.write("89016259");
+                    }
+                }else if(Float.valueOf(s[7]) <= 2900){
+                    bufferedWriter.write("99999827");
+                }else {
+                    if (Float.valueOf(s[17]) <80) {
+                        bufferedWriter.write("90109916");
+                    } else if (Float.valueOf(s[17]) <175) {
+                        bufferedWriter.write("99999826");
+                    }
+                    else {
+                        bufferedWriter.write("99999825");
+                    }
+                }
+                bufferedWriter.write("\n");
+                bufferedWriter.flush();
             }
-            bufferedWriter.write("\n");
+        }catch(IOException e){
+            e.printStackTrace();
         }
-    }
-
-    public String predict(String[] s) {
-        return "89016253";
     }
 }

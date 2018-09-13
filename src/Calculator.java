@@ -44,66 +44,66 @@ public class Calculator {
         this.current_type.add(new Integer(i));
     }
 
-    public void addGenda(int type,int genda,float month_traffic){
+    public void addGenda(int type,float n){
         switch (type){
             case 89016252:{
-                this.type_89016252.addGender(genda,month_traffic);
+                this.type_89016252.add(n);
                 break;
             }
             case 89016253:{
-                this.type_89016253.addGender(genda,month_traffic);
+                this.type_89016253.add(n);
                 break;
             }
             case 89016259:{
-                this.type_89016259.addGender(genda,month_traffic);
+                this.type_89016259.add(n);
                 break;
             }
             case 89950166:{
-                this.type_89950166.addGender(genda,month_traffic);
+                this.type_89950166.add(n);
                 break;
             }
             case 89950167:{
-                this.type_89950167.addGender(genda,month_traffic);
+                this.type_89950167.add(n);
                 break;
             }
             case 89950168:{
-                this.type_89950168.addGender(genda,month_traffic);
+                this.type_89950168.add(n);
                 break;
             }
             case 90063345:{
-                this.type_90063345.addGender(genda,month_traffic);
+                this.type_90063345.add(n);
                 break;
             }
             case 90109916:{
-                this.type_90109916.addGender(genda,month_traffic);
+                this.type_90109916.add(n);
                 break;
             }
             case 90155946:{
-                this.type_90155946.addGender(genda,month_traffic);
+                this.type_90155946.add(n);
                 break;
             }
             case 99104722:{
-                this.type_99104722.addGender(genda,month_traffic);
+                this.type_99104722.add(n);
                 break;
             }
             case 99999825:{
-                this.type_99999825.addGender(genda,month_traffic);
+                this.type_99999825.add(n);
                 break;
             }
             case 99999826:{
-                this.type_99999826.addGender(genda,month_traffic);
+                this.type_99999826.add(n);
                 break;
             }
             case 99999827:{
-                this.type_99999827.addGender(genda,month_traffic);
+                this.type_99999827.add(n);
                 break;
             }
             case 99999828:{
-                this.type_99999828.addGender(genda,month_traffic);
+                this.type_99999828.add(n);
                 break;
             }
             case 99999830:{
-                this.type_99999830.addGender(genda,month_traffic);
+                this.type_99999830.add(n);
                 break;
             }
         }
