@@ -26,14 +26,14 @@ public class Maintest {
         FileReader file = new FileReader("C:\\Users\\Buaa-Aladdin\\Documents\\train.csv");
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
-        /*int i = 0;
+        int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
             userInfo[i] = new UserInfo(line, calculator);
         }
         for (int j = 0; j < 15; j++) {
             System.out.println(typeTags[j].getTag() + " " + typeTags[j].getLocal_caller_time());
-        }*/
-        new Output(userInfo);
+        }
+        //new Output(userInfo);
     }
 }
 
@@ -53,7 +53,7 @@ class Output {
                 bufferedWriter.write(",");
                 if (Float.valueOf(s[7]) == 0) {
                     bufferedWriter.write("99104722");
-                } else if (Float.valueOf(s[7]) <= 200) {
+                } else if (Float.valueOf(s[7]) <= 200  && Integer.valueOf(s[11])!=0) {
                     if (Float.valueOf(s[17]) < 42.5) {
                         bufferedWriter.write("90063345");
                     } else {

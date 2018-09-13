@@ -63,6 +63,6 @@ public class UserInfo {
         this.USERID=s[26];
 
         this.calculator=cal;
-        this.calculator.addGenda(this.current_service,this.local_caller_time);
+        this.calculator.addGenda(this.current_service,this.contract_type);
     }
 }
