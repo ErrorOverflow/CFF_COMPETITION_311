@@ -64,7 +64,6 @@ public class UserInfo {
 
         this.calculator=cal;
         this.calculator.addCureentType(this.current_service);
-        this.calculator.addGenda(this.current_type,this.gender);
-
+        this.calculator.addGenda(this.current_service,this.gender);
     }
 }

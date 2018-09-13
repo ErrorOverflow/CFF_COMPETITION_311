@@ -39,8 +39,21 @@ public class Maintest {
 
 class Output {
     public Output(UserInfo[] userInfos) throws IOException {
+        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\test.csv");
         FileWriter fileWriter = new FileWriter("C:\\result.csv");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(",");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String readline;
+        bufferedWriter.write("user_id,predict\n");
+        while((readline=bufferedReader.readLine())!=null){
+            String[] s = readline.split(",");
+            bufferedWriter.write(s[25]);
+            bufferedWriter.write(",89016253");
+            bufferedWriter.write("\n");
+        }
+    }
+
+    public String predict(String[] s){
+        return "89016253";
     }
 }
