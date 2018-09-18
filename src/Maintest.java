@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Maintest {
     public static void main(String[] args) throws IOException {
-        TypeTag[] typeTags = new TypeTag[15];
+        /*TypeTag[] typeTags = new TypeTag[15];
         typeTags[0] = new TypeTag(89016252);
         typeTags[1] = new TypeTag(89016253);
         typeTags[2] = new TypeTag(89016259);
@@ -22,17 +22,24 @@ public class Maintest {
 
         Calculator calculator = new Calculator(typeTags);
         UserInfo[] userInfo = new UserInfo[100000];
-
+        */
         FileReader file = new FileReader("C:\\Users\\Buaa-Aladdin\\Documents\\train.csv");
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
+        String[] ref;
+        LocalCallerTimeNode[] localCallerTimeNode =new LocalCallerTimeNode[50];
+        for(int i=0;i<50;i++){
+            localCallerTimeNode[i] = new LocalCallerTimeNode(10*i,10*(i+1));
+        }
         int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
-            userInfo[i] = new UserInfo(line, calculator);
+            ref=line.split(",");
+            localCallerTimeNode[(int)((Double.valueOf(ref[17]))/10)].select(ref,false);
+            //userInfo[i] = new UserInfo(line, calculator);
         }
-        for (int j = 0; j < 15; j++) {
-            System.out.println(typeTags[j].getTag() + " " + typeTags[j].getLocal_caller_time());
-        }
+        //for (int j = 0; j < 15; j++) {
+        //    System.out.println(typeTags[j].getTag() + " " + typeTags[j].getLocal_caller_time());
+        //}
         //new Output(userInfo);
     }
 }
@@ -53,8 +60,8 @@ class Output {
                 bufferedWriter.write(",");
                 if (Float.valueOf(s[7]) == 0) {
                     bufferedWriter.write("99104722");
-                } else if (Float.valueOf(s[7]) <= 200  && Integer.valueOf(s[11])!=0) {
-                    if (Float.valueOf(s[17]) < 42.5) {
+                } else if (Float.valueOf(s[7]) <= 200) {
+                    if (Float.valueOf(s[17]) < 42.5 && Integer.valueOf(s[11])!=0) {
                         bufferedWriter.write("90063345");
                     } else {
                         bufferedWriter.write("90155946");
@@ -65,9 +72,9 @@ class Output {
                     if (Float.valueOf(s[17]) > 50) {
                         bufferedWriter.write("99999830");
                     } else {
-                        bufferedWriter.write("89950168");
+                        bufferedWriter.write("89950168");//53
                     }
-                } else if (Float.valueOf(s[7]) <= 2500) {
+                } else if (Float.valueOf(s[7]) <= 2400) {
                     if (Float.valueOf(s[17]) > 120) {
                         bufferedWriter.write("99999828");
                     } else if (Float.valueOf(s[17]) > 75) {
@@ -80,9 +87,9 @@ class Output {
                 }else if(Float.valueOf(s[7]) <= 2900){
                     bufferedWriter.write("99999827");
                 }else {
-                    if (Float.valueOf(s[17]) <80) {
+                    if (Float.valueOf(s[17]) <70 || Float.valueOf(s[14])<160) {
                         bufferedWriter.write("90109916");
-                    } else if (Float.valueOf(s[17]) <175) {
+                    } else if (Float.valueOf(s[17]) <170|| Integer.valueOf(s[9])>=6) {
                         bufferedWriter.write("99999826");
                     }
                     else {
