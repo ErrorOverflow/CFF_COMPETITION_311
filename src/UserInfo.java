@@ -1,5 +1,3 @@
-import java.nio.channels.FileLock;
-
 public class UserInfo {
     public String USERID;
     public int current_type;

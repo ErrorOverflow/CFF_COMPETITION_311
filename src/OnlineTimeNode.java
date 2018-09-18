@@ -1,7 +1,7 @@
 public class OnlineTimeNode {
     private double low;
     private double high;
-    private MonthTrafficNode[] monthTrafficNodes;
+    public MonthTrafficNode[] monthTrafficNodes;
 
     public OnlineTimeNode(double low,double high){
         this.low=low;
@@ -12,6 +12,14 @@ public class OnlineTimeNode {
         }
     }
     public void select(String[] ref,boolean isFinal){
-        this.monthTrafficNodes[(int)((Double.valueOf(ref[7]))/10)].select(ref,isFinal);
+        if(isFinal){
+            for(int i=0;i<60;i++){
+                this.monthTrafficNodes[i].select(ref,true);
+            }
+            return ;
+        }
+        try{
+            this.monthTrafficNodes[(int)((Double.valueOf(ref[7]))/100)].select(ref,false);
+        }catch(Exception e){}
     }
 }

@@ -2,6 +2,7 @@ public class PayNumNode {
     private double low;
     private double high;
     private int[] result;
+    public int first;
 
     public PayNumNode(double low, double high) {
         this.low = low;
@@ -10,6 +11,14 @@ public class PayNumNode {
     }
 
     public void select(String[] ref, boolean isFinal) {
+        if(isFinal){
+            for(int i=1;i<15;i++){
+                if(this.result[i]>this.result[first]){
+                    this.first=i;
+                }
+            }
+            return ;
+        }
         switch (Integer.valueOf(ref[25])) {
             case 89016252: {
                 this.result[0]++;
