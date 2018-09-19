@@ -1,22 +1,22 @@
 public class MonthTrafficNode {
-    public PayNumNode[] payNumNode;
+    public ContractTimeNode[] contractTimeNodes;
 
     public MonthTrafficNode() {
-        this.payNumNode = new PayNumNode[60];
-        for (int i = 0; i < 60; i++) {
-            this.payNumNode[i] = new PayNumNode();
+        this.contractTimeNodes = new ContractTimeNode[4];
+        for (int i = 0; i < 4; i++) {
+            this.contractTimeNodes[i] = new ContractTimeNode();
         }
     }
 
     public void select(String[] ref, boolean isFinal) {
         if(isFinal){
-            for (int i = 0; i < 60; i++) {
-                this.payNumNode[i].select(ref,true);
+            for (int i = 0; i < 4; i++) {
+                this.contractTimeNodes[i].select(ref,true);
             }
             return;
         }
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / 10)].select(ref, false);
+            this.contractTimeNodes[(int) (Double.valueOf(ref[10])/10)].select(ref, false);
         } catch (Exception e) {
         }
     }

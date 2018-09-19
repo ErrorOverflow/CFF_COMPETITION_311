@@ -44,10 +44,11 @@ public class Maintest {
         //
         //
         //
+
         try {
             int illegal = 0;
-            int right=0;
-            int wrong=0;
+            int right = 0;
+            int wrong = 0;
             FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv");
             FileWriter fileWriter = new FileWriter("C:\\result.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -60,15 +61,16 @@ public class Maintest {
                 bufferedWriter.write(s[25]);
                 bufferedWriter.write(",");
                 try {
-                    String mid=String.valueOf(type[
-                            localCallerTimeNode[(int)(Double.valueOf(s[17]) / 10)].onlineTimeNode[
-                                    (int)(Double.valueOf(s[2]) / 10)].monthTrafficNodes[
-                                    (int)(Double.valueOf(s[7]) / 100)].payNumNode[
-                                    (int)(Double.valueOf(s[14]) / 10)].first]);
+                    String mid = String.valueOf(type[
+                            localCallerTimeNode[(int) (Double.valueOf(s[17]) / 10)].onlineTimeNode[
+                                    (int) (Double.valueOf(s[2]) / 10)].monthTrafficNodes[
+                                    (int) (Double.valueOf(s[7]) / 100)].contractTimeNodes[
+                                    (int) (Double.valueOf(s[10]) / 10)].payNumNode[
+                                    (int) (Double.valueOf(s[14]) / 10)].first]);
                     bufferedWriter.write(mid);
-                    if(mid.equals(s[25])){
+                    if (mid.equals(s[25])) {
                         right++;
-                    }else{
+                    } else {
                         wrong++;
                     }
                 } catch (Exception e) {
@@ -84,6 +86,5 @@ public class Maintest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
