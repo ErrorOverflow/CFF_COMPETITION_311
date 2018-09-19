@@ -74,10 +74,10 @@ public class Maintest {
                     if (flag[2] >= 30) flag[2] = 29;
                     flag[3] = (int) (Double.valueOf(s[10]) / 12);
                     if (flag[3] >= 4) flag[3] = 3;
-                    flag[4] = (int) (Double.valueOf(s[16]) / 500);
-                    if (flag[4] >= 20) flag[4] = 19;
+                    flag[4] = (int) (Double.valueOf(s[0]) / 1);
+                    if (flag[4] >= 5) flag[4] = 4;
                     flag[5] = (int) (Double.valueOf(s[14]) / 30);
-                    if (flag[5] >= 30) flag[4] = 29;
+                    if (flag[5] >= 30) flag[5] = 29;
                     String mid = String.valueOf(type[
                             localCallerTimeNode[flag[0]].onlineTimeNode[
                                     flag[1]].monthTrafficNodes[

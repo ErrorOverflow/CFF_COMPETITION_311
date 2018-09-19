@@ -9,16 +9,16 @@ public class LocalTrafficMonthNode {
     }
 
     public void select(String[] ref, boolean isFinal) {
-        if(isFinal){
+        if (isFinal) {
             for (int i = 0; i < 30; i++) {
-                this.payNumNode[i].select(ref,true);
+                this.payNumNode[i].select(ref, true);
             }
             return;
         }
         try {
             this.payNumNode[(int) ((Double.valueOf(ref[14])) / 30)].select(ref, false);
         } catch (Exception e) {
-            this.payNumNode[30-1].select(ref, false);
+            this.payNumNode[30 - 1].select(ref, false);
         }
     }
 }
