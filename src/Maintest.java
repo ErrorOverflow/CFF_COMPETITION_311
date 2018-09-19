@@ -70,14 +70,14 @@ public class Maintest {
                     if (flag[0] >= SPLIT_NUM) flag[0] = SPLIT_NUM - 1;
                     flag[1] = (int) (Double.valueOf(s[2]) / 5);
                     if (flag[1] >= 30) flag[1] = 29;
-                    flag[2] = (int) (Double.valueOf(s[7]) / 150);
-                    if (flag[2] >= 35) flag[2] = 34;
+                    flag[2] = (int) (Double.valueOf(s[7]) / 125);
+                    if (flag[2] >= 40) flag[2] = 39;
                     flag[3] = (int) (Double.valueOf(s[10]) / 12);
                     if (flag[3] >= 4) flag[3] = 3;
                     flag[4] = (int) (Double.valueOf(s[0]) / 1 - 1);
                     if (flag[4] >= 4) flag[4] = 3;
-                    flag[5] = (int) (Double.valueOf(s[12]) / 1 - 2);
-                    if (flag[5] >= 3) flag[5] = 2;
+                    flag[5] = (int) ((Double.valueOf(s[12])+1) / 2 - 1);
+                    if (flag[5] >= 2) flag[5] = 1;
                     flag[6] = (int) (Double.valueOf(s[14]) / 50);
                     if (flag[6] >= 10) flag[6] = 9;
                     String mid = String.valueOf(type[
