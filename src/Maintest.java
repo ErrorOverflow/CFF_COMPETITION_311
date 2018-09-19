@@ -27,7 +27,7 @@ public class Maintest {
         String[] ref;
         LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[50];
         for (int i = 0; i < 50; i++) {
-            localCallerTimeNode[i] = new LocalCallerTimeNode(10 * i, 10 * (i + 1));
+            localCallerTimeNode[i] = new LocalCallerTimeNode();
         }
         int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 99999) {

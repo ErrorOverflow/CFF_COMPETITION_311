@@ -1,14 +1,10 @@
 public class MonthTrafficNode {
-    private double low;
-    private double high;
     public PayNumNode[] payNumNode;
 
-    public MonthTrafficNode(double low, double high) {
-        this.low = low;
-        this.high = high;
+    public MonthTrafficNode() {
         this.payNumNode = new PayNumNode[60];
         for (int i = 0; i < 60; i++) {
-            this.payNumNode[i] = new PayNumNode(10 * i, 10 * (i + 1));
+            this.payNumNode[i] = new PayNumNode();
         }
     }
 

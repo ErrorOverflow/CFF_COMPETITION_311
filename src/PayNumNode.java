@@ -1,12 +1,8 @@
 public class PayNumNode {
-    private double low;
-    private double high;
     private int[] result;
     public int first;
 
-    public PayNumNode(double low, double high) {
-        this.low = low;
-        this.high = high;
+    public PayNumNode() {
         this.result = new int[15];
     }
 
