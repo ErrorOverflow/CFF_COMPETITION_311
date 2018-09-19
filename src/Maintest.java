@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int SPLIT_SPACE = 20;
-    public static final int SPLIT_NUM = 15;
+    public static final int SPLIT_SPACE = 10;
+    public static final int SPLIT_NUM = 30;
 
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
@@ -33,7 +33,7 @@ public class Maintest {
             localCallerTimeNode[i] = new LocalCallerTimeNode();
         }
         int i = 0;
-        while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
+        while ((line = bufferedReader.readLine()) != null && i++ < 610000) {
             ref = line.split(",");
             try {
                 localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / SPLIT_SPACE)].select(ref, false);
@@ -68,16 +68,16 @@ public class Maintest {
                     int[] flag = new int[26];
                     flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE);
                     if (flag[0] >= SPLIT_NUM) flag[0] = SPLIT_NUM - 1;
-                    flag[1] = (int) (Double.valueOf(s[2]) / 10);
-                    if (flag[1] >= 15) flag[1] = 14;
-                    flag[2] = (int) (Double.valueOf(s[7]) / 200);
-                    if (flag[2] >= 30) flag[2] = 29;
+                    flag[1] = (int) (Double.valueOf(s[2]) / 5);
+                    if (flag[1] >= 30) flag[1] = 29;
+                    flag[2] = (int) (Double.valueOf(s[7]) / 150);
+                    if (flag[2] >= 35) flag[2] = 34;
                     flag[3] = (int) (Double.valueOf(s[10]) / 12);
                     if (flag[3] >= 4) flag[3] = 3;
-                    flag[4] = (int) (Double.valueOf(s[0]) / 1);
-                    if (flag[4] >= 5) flag[4] = 4;
-                    flag[5] = (int) (Double.valueOf(s[14]) / 30);
-                    if (flag[5] >= 30) flag[5] = 29;
+                    flag[4] = (int) (Double.valueOf(s[0]) / 1 -1);
+                    if (flag[4] >= 4) flag[4] = 3;
+                    flag[5] = (int) (Double.valueOf(s[14]) / 50);
+                    if (flag[5] >= 10) flag[5] = 9;
                     String mid = String.valueOf(type[
                             localCallerTimeNode[flag[0]].onlineTimeNode[
                                     flag[1]].monthTrafficNodes[
@@ -86,6 +86,7 @@ public class Maintest {
                                     flag[4]].payNumNode[
                                     flag[5]].first]);
                     bufferedWriter.write(mid);
+
                     if (mid.equals(s[25])) {
                         right++;
                     } else {
@@ -98,6 +99,7 @@ public class Maintest {
                 bufferedWriter.write("\n");
                 bufferedWriter.flush();
             }
+
             System.out.println(illegal);
             System.out.println(right);
             System.out.println(wrong);
