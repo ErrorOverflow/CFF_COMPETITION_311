@@ -1,6 +1,9 @@
 import java.io.*;
 
 public class Maintest {
+    public static final int SPLIT_SPACE = 20;
+    public static final int SPLIT_NUM = 15;
+
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
         type[0] = 89016252;
@@ -25,20 +28,21 @@ public class Maintest {
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
         String[] ref;
-        LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[50];
-        for (int i = 0; i < 50; i++) {
+        LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[SPLIT_NUM];
+        for (int i = 0; i < SPLIT_NUM; i++) {
             localCallerTimeNode[i] = new LocalCallerTimeNode();
         }
         int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
             ref = line.split(",");
             try {
-                localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / 10)].select(ref, false);
+                localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / SPLIT_SPACE)].select(ref, false);
             } catch (Exception e) {
+                localCallerTimeNode[SPLIT_NUM - 1].select(ref, false);
             }
             //userInfo[i] = new UserInfo(line, calculator);
         }
-        for (int j = 0; j < 50; j++) {
+        for (int j = 0; j < SPLIT_NUM; j++) {
             localCallerTimeNode[j].select(null, true);
         }
         //
@@ -61,12 +65,26 @@ public class Maintest {
                 bufferedWriter.write(s[25]);
                 bufferedWriter.write(",");
                 try {
+                    int[] flag = new int[26];
+                    flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE);
+                    if (flag[0] >= SPLIT_NUM) flag[0] = SPLIT_NUM - 1;
+                    flag[1] = (int) (Double.valueOf(s[2]) / 10);
+                    if (flag[1] >= 15) flag[1] = 14;
+                    flag[2] = (int) (Double.valueOf(s[7]) / 200);
+                    if (flag[2] >= 30) flag[2] = 29;
+                    flag[3] = (int) (Double.valueOf(s[10]) / 12);
+                    if (flag[3] >= 4) flag[3] = 3;
+                    flag[4] = (int) (Double.valueOf(s[16]) / 500);
+                    if (flag[4] >= 20) flag[4] = 19;
+                    flag[5] = (int) (Double.valueOf(s[14]) / 30);
+                    if (flag[5] >= 30) flag[4] = 29;
                     String mid = String.valueOf(type[
-                            localCallerTimeNode[(int) (Double.valueOf(s[17]) / 10)].onlineTimeNode[
-                                    (int) (Double.valueOf(s[2]) / 10)].monthTrafficNodes[
-                                    (int) (Double.valueOf(s[7]) / 100)].contractTimeNodes[
-                                    (int) (Double.valueOf(s[10]) / 10)].payNumNode[
-                                    (int) (Double.valueOf(s[14]) / 10)].first]);
+                            localCallerTimeNode[flag[0]].onlineTimeNode[
+                                    flag[1]].monthTrafficNodes[
+                                    flag[2]].contractTimeNodes[
+                                    flag[3]].localTrafficMonthNodes[
+                                    flag[4]].payNumNode[
+                                    flag[5]].first]);
                     bufferedWriter.write(mid);
                     if (mid.equals(s[25])) {
                         right++;

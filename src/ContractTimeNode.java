@@ -1,23 +1,24 @@
 public class ContractTimeNode {
-    public PayNumNode[] payNumNode;
+    public LocalTrafficMonthNode[] localTrafficMonthNodes;
 
     public ContractTimeNode() {
-        this.payNumNode = new PayNumNode[60];
-        for (int i = 0; i < 60; i++) {
-            this.payNumNode[i] = new PayNumNode();
+        this.localTrafficMonthNodes = new LocalTrafficMonthNode[20];
+        for (int i = 0; i < 20; i++) {
+            this.localTrafficMonthNodes[i] = new LocalTrafficMonthNode();
         }
     }
 
     public void select(String[] ref, boolean isFinal) {
         if(isFinal){
-            for (int i = 0; i < 60; i++) {
-                this.payNumNode[i].select(ref,true);
+            for (int i = 0; i < 20; i++) {
+                this.localTrafficMonthNodes[i].select(ref,true);
             }
             return;
         }
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / 10)].select(ref, false);
+            this.localTrafficMonthNodes[(int) ((Double.valueOf(ref[16])) / 500)].select(ref, false);
         } catch (Exception e) {
+            this.localTrafficMonthNodes[20-1].select(ref, false);
         }
     }
 }

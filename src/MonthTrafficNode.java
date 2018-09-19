@@ -16,8 +16,9 @@ public class MonthTrafficNode {
             return;
         }
         try {
-            this.contractTimeNodes[(int) (Double.valueOf(ref[10])/10)].select(ref, false);
+            this.contractTimeNodes[(int) (Double.valueOf(ref[10])/12)].select(ref, false);
         } catch (Exception e) {
+            this.contractTimeNodes[3].select(ref, false);
         }
     }
 }
