@@ -74,17 +74,20 @@ public class Maintest {
                     if (flag[2] >= 35) flag[2] = 34;
                     flag[3] = (int) (Double.valueOf(s[10]) / 12);
                     if (flag[3] >= 4) flag[3] = 3;
-                    flag[4] = (int) (Double.valueOf(s[0]) / 1 -1);
+                    flag[4] = (int) (Double.valueOf(s[0]) / 1 - 1);
                     if (flag[4] >= 4) flag[4] = 3;
-                    flag[5] = (int) (Double.valueOf(s[14]) / 50);
-                    if (flag[5] >= 10) flag[5] = 9;
+                    flag[5] = (int) (Double.valueOf(s[12]) / 1 - 2);
+                    if (flag[5] >= 3) flag[5] = 2;
+                    flag[6] = (int) (Double.valueOf(s[14]) / 50);
+                    if (flag[6] >= 10) flag[6] = 9;
                     String mid = String.valueOf(type[
                             localCallerTimeNode[flag[0]].onlineTimeNode[
                                     flag[1]].monthTrafficNodes[
                                     flag[2]].contractTimeNodes[
                                     flag[3]].localTrafficMonthNodes[
-                                    flag[4]].payNumNode[
-                                    flag[5]].first]);
+                                    flag[4]].netServiceNodes[
+                                    flag[5]].payNumNode[
+                                    flag[6]].first]);
                     bufferedWriter.write(mid);
 
                     if (mid.equals(s[25])) {

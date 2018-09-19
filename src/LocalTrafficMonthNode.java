@@ -1,24 +1,24 @@
 public class LocalTrafficMonthNode {
-    public PayNumNode[] payNumNode;
+    public NetServiceNode[] netServiceNodes;
 
     public LocalTrafficMonthNode() {
-        this.payNumNode = new PayNumNode[10];
-        for (int i = 0; i < 10; i++) {
-            this.payNumNode[i] = new PayNumNode();
+        this.netServiceNodes = new NetServiceNode[3];
+        for (int i = 0; i < 3; i++) {
+            this.netServiceNodes[i] = new NetServiceNode();
         }
     }
 
     public void select(String[] ref, boolean isFinal) {
         if (isFinal) {
-            for (int i = 0; i < 10; i++) {
-                this.payNumNode[i].select(ref, true);
+            for (int i = 0; i < 3; i++) {
+                this.netServiceNodes[i].select(ref, true);
             }
             return;
         }
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / 50)].select(ref, false);
+            this.netServiceNodes[(int) ((Double.valueOf(ref[12])) / 1) - 2].select(ref, false);
         } catch (Exception e) {
-            this.payNumNode[10 - 1].select(ref, false);
+            this.netServiceNodes[3 - 1].select(ref, false);
         }
     }
 }
