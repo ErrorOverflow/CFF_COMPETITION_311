@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int[] SPLIT_SPACE = {10, 5, 125, 12, 1, 2, 50};
-    public static final int[] SPLIT_NUM = {30, 30, 40, 4, 4, 2, 10};
+    public static final int[] SPLIT_SPACE = {8, 5, 125, 12, 1, 2, 50};
+    public static final int[] SPLIT_NUM = {40, 35, 50, 4, 4, 2, 10};
 
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
