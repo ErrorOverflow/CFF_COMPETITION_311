@@ -1,49 +1,62 @@
 import java.io.*;
 
 public class Maintest {
+    public static final int SPLIT_SPACE = 10;
+    public static final int SPLIT_NUM = 30;
+
     public static void main(String[] args) throws IOException {
-        TypeTag[] typeTags = new TypeTag[15];
-        typeTags[0] = new TypeTag(89016252);
-        typeTags[1] = new TypeTag(89016253);
-        typeTags[2] = new TypeTag(89016259);
-        typeTags[3] = new TypeTag(89950166);
-        typeTags[4] = new TypeTag(89950167);
-        typeTags[5] = new TypeTag(89950168);
-        typeTags[6] = new TypeTag(90063345);
-        typeTags[7] = new TypeTag(90109916);
-        typeTags[8] = new TypeTag(90155946);
-        typeTags[9] = new TypeTag(99104722);
-        typeTags[10] = new TypeTag(99999825);
-        typeTags[11] = new TypeTag(99999826);
-        typeTags[12] = new TypeTag(99999827);
-        typeTags[13] = new TypeTag(99999828);
-        typeTags[14] = new TypeTag(99999830);
-
-
-        Calculator calculator = new Calculator(typeTags);
-        UserInfo[] userInfo = new UserInfo[100000];
-
+        int[] type = new int[15];
+        type[0] = 89016252;
+        type[1] = 89016253;
+        type[2] = 89016259;
+        type[3] = 89950166;
+        type[4] = 89950167;
+        type[5] = 89950168;
+        type[6] = 90063345;
+        type[7] = 90109916;
+        type[8] = 90155946;
+        type[9] = 99104722;
+        type[10] = 99999825;
+        type[11] = 99999826;
+        type[12] = 99999827;
+        type[13] = 99999828;
+        type[14] = 99999830;
+        //
+        //
+        //
         FileReader file = new FileReader("C:\\Users\\Buaa-Aladdin\\Documents\\train.csv");
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
+        String[] ref;
+        LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[SPLIT_NUM];
+        for (int i = 0; i < SPLIT_NUM; i++) {
+            localCallerTimeNode[i] = new LocalCallerTimeNode();
+        }
         int i = 0;
-        while ((line = bufferedReader.readLine()) != null && i++ < 99999) {
-            userInfo[i] = new UserInfo(line, calculator);
+        while ((line = bufferedReader.readLine()) != null && i++ < 610000) {
+            ref = line.split(",");
+            try {
+                localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / SPLIT_SPACE)].select(ref, false);
+            } catch (Exception e) {
+                localCallerTimeNode[SPLIT_NUM - 1].select(ref, false);
+            }
+            //userInfo[i] = new UserInfo(line, calculator);
         }
-        for (int j = 0; j < 15; j++) {
-            System.out.println(typeTags[j].getTag() + " " + typeTags[j].getLocal_caller_time());
+        for (int j = 0; j < SPLIT_NUM; j++) {
+            localCallerTimeNode[j].select(null, true);
         }
-        //new Output(userInfo);
-    }
-}
+        //
+        //
+        //
 
-class Output {
-    public Output(UserInfo[] userInfos) {
-        try{
-            FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\test.csv");
+        try {
+            int illegal = 0;
+            int right = 0;
+            int wrong = 0;
+            FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv");
             FileWriter fileWriter = new FileWriter("C:\\result.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            bufferedReader = new BufferedReader(fileReader);
             String readline;
             bufferedWriter.write("user_id,predict\n");
             readline = bufferedReader.readLine();
@@ -51,48 +64,49 @@ class Output {
                 String[] s = readline.split(",");
                 bufferedWriter.write(s[25]);
                 bufferedWriter.write(",");
-                if (Float.valueOf(s[7]) == 0) {
-                    bufferedWriter.write("99104722");
-                } else if (Float.valueOf(s[7]) <= 200  && Integer.valueOf(s[11])!=0) {
-                    if (Float.valueOf(s[17]) < 42.5) {
-                        bufferedWriter.write("90063345");
+                try {
+                    int[] flag = new int[26];
+                    flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE);
+                    if (flag[0] >= SPLIT_NUM) flag[0] = SPLIT_NUM - 1;
+                    flag[1] = (int) (Double.valueOf(s[2]) / 5);
+                    if (flag[1] >= 30) flag[1] = 29;
+                    flag[2] = (int) (Double.valueOf(s[7]) / 125);
+                    if (flag[2] >= 40) flag[2] = 39;
+                    flag[3] = (int) (Double.valueOf(s[10]) / 12);
+                    if (flag[3] >= 4) flag[3] = 3;
+                    flag[4] = (int) (Double.valueOf(s[0]) / 1 - 1);
+                    if (flag[4] >= 4) flag[4] = 3;
+                    flag[5] = (int) ((Double.valueOf(s[12])+1) / 2 - 1);
+                    if (flag[5] >= 2) flag[5] = 1;
+                    flag[6] = (int) (Double.valueOf(s[14]) / 50);
+                    if (flag[6] >= 10) flag[6] = 9;
+                    String mid = String.valueOf(type[
+                            localCallerTimeNode[flag[0]].onlineTimeNode[
+                                    flag[1]].monthTrafficNodes[
+                                    flag[2]].contractTimeNodes[
+                                    flag[3]].localTrafficMonthNodes[
+                                    flag[4]].netServiceNodes[
+                                    flag[5]].payNumNode[
+                                    flag[6]].first]);
+                    bufferedWriter.write(mid);
+
+                    if (mid.equals(s[25])) {
+                        right++;
                     } else {
-                        bufferedWriter.write("90155946");
+                        wrong++;
                     }
-                } else if (Float.valueOf(s[7]) <= 700) {
+                } catch (Exception e) {
                     bufferedWriter.write("89016252");
-                } else if (Float.valueOf(s[7]) <= 1400) {
-                    if (Float.valueOf(s[17]) > 50) {
-                        bufferedWriter.write("99999830");
-                    } else {
-                        bufferedWriter.write("89950168");
-                    }
-                } else if (Float.valueOf(s[7]) <= 2500) {
-                    if (Float.valueOf(s[17]) > 120) {
-                        bufferedWriter.write("99999828");
-                    } else if (Float.valueOf(s[17]) > 75) {
-                        bufferedWriter.write("89950167");
-                    } else if (Float.valueOf(s[17]) > 57) {
-                        bufferedWriter.write("89950166");
-                    } else {
-                        bufferedWriter.write("89016259");
-                    }
-                }else if(Float.valueOf(s[7]) <= 2900){
-                    bufferedWriter.write("99999827");
-                }else {
-                    if (Float.valueOf(s[17]) <80) {
-                        bufferedWriter.write("90109916");
-                    } else if (Float.valueOf(s[17]) <175) {
-                        bufferedWriter.write("99999826");
-                    }
-                    else {
-                        bufferedWriter.write("99999825");
-                    }
+                    illegal++;
                 }
                 bufferedWriter.write("\n");
                 bufferedWriter.flush();
             }
-        }catch(IOException e){
+
+            System.out.println(illegal);
+            System.out.println(right);
+            System.out.println(wrong);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
