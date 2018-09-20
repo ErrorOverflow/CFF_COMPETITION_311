@@ -31,7 +31,27 @@ public class OnlineTimeNode {
             }
         } catch (NullPointerException e) {
             this.monthTrafficNodes[(int) ((Double.valueOf(ref[7])) / this.space[2])] = new MonthTrafficNode(this.space, this.num);
-            this.monthTrafficNodes[(int) ((Double.valueOf(ref[7])) / this.space[2])].select(ref,false);
+            this.monthTrafficNodes[(int) ((Double.valueOf(ref[7])) / this.space[2])].select(ref, false);
+        }
+    }
+
+    public MonthTrafficNode find(int target) {
+        int i = 0;
+        while (true) {
+            if (target + i < 0) {
+                if (i <= 0) {
+                    i--;
+                }
+                i *= -1;
+                continue;
+            }
+            if (this.monthTrafficNodes[target + i] != null) {
+                return this.monthTrafficNodes[target + i];
+            }
+            if (i <= 0) {
+                i--;
+            }
+            i *= -1;
         }
     }
 }

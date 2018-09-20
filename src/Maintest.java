@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int[] SPLIT_SPACE = {10, 5, 100, 1, 1, 2, 50};
-    public static final int[] SPLIT_NUM = {40, 500, 100, 40, 4, 2, 10};
+    public static final int[] SPLIT_SPACE = {10, 10, 100, 1, 1, 1, 50};
+    public static final int[] SPLIT_NUM = {80, 1000, 1000, 40, 5, 5, 1000};
 
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
@@ -60,8 +60,8 @@ public class Maintest {
             readline = bufferedReader.readLine();
             while ((readline = bufferedReader.readLine()) != null) {
                 String[] s = readline.split(",");
-                //bufferedWriter.write(s[25]);
-                //bufferedWriter.write(",");
+                bufferedWriter.write(s[25]);
+                bufferedWriter.write(",");
                 try {
                     int[] flag = new int[26];
                     flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE[0]);
@@ -77,37 +77,29 @@ public class Maintest {
                     if (flag[3] >= SPLIT_NUM[3]) flag[3] = SPLIT_NUM[3] - 1;
                     else if (flag[3] < 0) flag[3] = 0;
 
-                    flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4] - 1);
+                    flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4]);
                     if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
 
-                    flag[5] = (int) ((Double.valueOf(s[12]) + 1) / SPLIT_SPACE[5] - 1);
+                    flag[5] = (int) (Double.valueOf(s[12]) / SPLIT_SPACE[5]);
                     if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
 
                     flag[6] = (int) (Double.valueOf(s[14]) / SPLIT_SPACE[6]);
                     if (flag[6] >= SPLIT_NUM[6]) flag[6] = SPLIT_NUM[6] - 1;
 
                     String mid = String.valueOf(type[
-                            localCallerTimeNode[flag[0]].onlineTimeNode[
-                                    flag[1]].monthTrafficNodes[
-                                    flag[2]].contractTimeNodes[
-                                    flag[3]].localTrafficMonthNodes[
-                                    flag[4]].netServiceNodes[
-                                    flag[5]].payNumNode[
-                                    flag[6]].first]);
-                    //bufferedWriter.write(mid);
-
+                            localCallerTimeNode[flag[0]].find(flag[1]).find(flag[2]).find(flag[3]).
+                                    find(flag[4]).find(flag[5]).find(flag[6]).first]);
+                    bufferedWriter.write(mid);
                     if (mid.equals(s[25])) {
                         right++;
                     } else {
-                        bufferedWriter.write(readline + "\n");
                         wrong++;
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
-                    //bufferedWriter.write("89016252");
+                    bufferedWriter.write("89016252");
                     illegal++;
                 }
-                //bufferedWriter.write("\n");
+                bufferedWriter.write("\n");
                 bufferedWriter.flush();
             }
 

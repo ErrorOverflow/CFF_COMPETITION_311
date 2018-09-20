@@ -7,22 +7,51 @@ public class LocalTrafficMonthNode {
         this.space=s;
         this.num=n;
         this.netServiceNodes = new NetServiceNode[this.num[5]];
-        for (int i = 0; i < this.num[5]; i++) {
-            this.netServiceNodes[i] = new NetServiceNode(s,n);
-        }
     }
 
     public void select(String[] ref, boolean isFinal) {
         if (isFinal) {
             for (int i = 0; i < this.num[5]; i++) {
-                this.netServiceNodes[i].select(ref, true);
+                try{
+                    this.netServiceNodes[i].select(ref, true);
+                }catch(NullPointerException e){
+                }
             }
             return;
         }
+
         try {
-            this.netServiceNodes[(int) (((Double.valueOf(ref[12]))+1) / this.space[5]) - 1].select(ref, false);
-        } catch (Exception e) {
-            this.netServiceNodes[this.num[5] - 1].select(ref, false);
+            this.netServiceNodes[(int) ((Double.valueOf(ref[12])) / this.space[5])].select(ref, false);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            try {
+                this.netServiceNodes[this.num[5] - 1].select(ref, false);
+            } catch (NullPointerException x) {
+                this.netServiceNodes[this.num[5] - 1] = new NetServiceNode(this.space, this.num);
+                this.netServiceNodes[this.num[5] - 1].select(ref, false);
+            }
+        } catch (NullPointerException e) {
+            this.netServiceNodes[(int) ((Double.valueOf(ref[12])) / this.space[5])] = new NetServiceNode(this.space, this.num);
+            this.netServiceNodes[(int) ((Double.valueOf(ref[12])) / this.space[5])].select(ref, false);
+        }
+    }
+
+    public NetServiceNode find(int target) {
+        int i = 0;
+        while (true) {
+            if (target + i < 0) {
+                if(i<=0){
+                    i--;
+                }
+                i*=-1;
+                continue;
+            }
+            if (this.netServiceNodes[target + i] != null) {
+                return this.netServiceNodes[target + i];
+            }
+            if(i<=0){
+                i--;
+            }
+            i*=-1;
         }
     }
 }

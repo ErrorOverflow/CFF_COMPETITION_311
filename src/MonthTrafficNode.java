@@ -32,4 +32,24 @@ public class MonthTrafficNode {
             this.contractTimeNodes[(int) ((Double.valueOf(ref[10])) / this.space[3])].select(ref,false);
         }
     }
+
+    public ContractTimeNode find(int target) {
+        int i = 0;
+        while (true) {
+            if (target + i < 0) {
+                if(i<=0){
+                    i--;
+                }
+                i*=-1;
+                continue;
+            }
+            if (this.contractTimeNodes[target + i] != null) {
+                return this.contractTimeNodes[target + i];
+            }
+            if(i<=0){
+                i--;
+            }
+            i*=-1;
+        }
+    }
 }
