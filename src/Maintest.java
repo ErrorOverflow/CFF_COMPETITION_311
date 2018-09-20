@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int SPLIT_SPACE = 10;
-    public static final int SPLIT_NUM = 30;
+    public static final int[] SPLIT_SPACE = {10, 5, 125, 12, 1, 2, 50};
+    public static final int[] SPLIT_NUM = {30, 30, 40, 4, 4, 2, 10};
 
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
@@ -28,21 +28,21 @@ public class Maintest {
         BufferedReader bufferedReader = new BufferedReader(file);
         String line;
         String[] ref;
-        LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[SPLIT_NUM];
-        for (int i = 0; i < SPLIT_NUM; i++) {
-            localCallerTimeNode[i] = new LocalCallerTimeNode();
+        LocalCallerTimeNode[] localCallerTimeNode = new LocalCallerTimeNode[SPLIT_NUM[0]];
+        for (int i = 0; i < SPLIT_NUM[0]; i++) {
+            localCallerTimeNode[i] = new LocalCallerTimeNode(SPLIT_SPACE, SPLIT_NUM);
         }
         int i = 0;
         while ((line = bufferedReader.readLine()) != null && i++ < 610000) {
             ref = line.split(",");
             try {
-                localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / SPLIT_SPACE)].select(ref, false);
+                localCallerTimeNode[(int) ((Double.valueOf(ref[17])) / SPLIT_SPACE[0])].select(ref, false);
             } catch (Exception e) {
-                localCallerTimeNode[SPLIT_NUM - 1].select(ref, false);
+                localCallerTimeNode[SPLIT_NUM[0] - 1].select(ref, false);
             }
             //userInfo[i] = new UserInfo(line, calculator);
         }
-        for (int j = 0; j < SPLIT_NUM; j++) {
+        for (int j = 0; j < SPLIT_NUM[0]; j++) {
             localCallerTimeNode[j].select(null, true);
         }
         //
@@ -66,20 +66,20 @@ public class Maintest {
                 bufferedWriter.write(",");
                 try {
                     int[] flag = new int[26];
-                    flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE);
-                    if (flag[0] >= SPLIT_NUM) flag[0] = SPLIT_NUM - 1;
-                    flag[1] = (int) (Double.valueOf(s[2]) / 5);
-                    if (flag[1] >= 30) flag[1] = 29;
-                    flag[2] = (int) (Double.valueOf(s[7]) / 125);
-                    if (flag[2] >= 40) flag[2] = 39;
-                    flag[3] = (int) (Double.valueOf(s[10]) / 12);
-                    if (flag[3] >= 4) flag[3] = 3;
-                    flag[4] = (int) (Double.valueOf(s[0]) / 1 - 1);
-                    if (flag[4] >= 4) flag[4] = 3;
-                    flag[5] = (int) ((Double.valueOf(s[12])+1) / 2 - 1);
-                    if (flag[5] >= 2) flag[5] = 1;
-                    flag[6] = (int) (Double.valueOf(s[14]) / 50);
-                    if (flag[6] >= 10) flag[6] = 9;
+                    flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE[0]);
+                    if (flag[0] >= SPLIT_NUM[0]) flag[0] = SPLIT_NUM[0] - 1;
+                    flag[1] = (int) (Double.valueOf(s[2]) / SPLIT_SPACE[1]);
+                    if (flag[1] >= SPLIT_NUM[1]) flag[1] = SPLIT_NUM[1] - 1;
+                    flag[2] = (int) (Double.valueOf(s[7]) / SPLIT_SPACE[2]);
+                    if (flag[2] >= SPLIT_NUM[2]) flag[2] = SPLIT_NUM[2] - 1;
+                    flag[3] = (int) (Double.valueOf(s[10]) / SPLIT_SPACE[3]);
+                    if (flag[3] >= SPLIT_NUM[3]) flag[3] = SPLIT_NUM[3] - 1;
+                    flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4] - 1);
+                    if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
+                    flag[5] = (int) ((Double.valueOf(s[12]) + 1) / SPLIT_SPACE[5] - 1);
+                    if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
+                    flag[6] = (int) (Double.valueOf(s[14]) / SPLIT_SPACE[6]);
+                    if (flag[6] >= SPLIT_NUM[6]) flag[6] = SPLIT_NUM[6] - 1;
                     String mid = String.valueOf(type[
                             localCallerTimeNode[flag[0]].onlineTimeNode[
                                     flag[1]].monthTrafficNodes[
