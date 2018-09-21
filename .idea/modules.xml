@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CFF_COMPETITION_311.iml" filepath="$PROJECT_DIR$/.idea/CFF_COMPETITION_311.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CFF_COMPETITION_311.iml" filepath="$PROJECT_DIR$/CFF_COMPETITION_311.iml" />
     </modules>
   </component>
 </project>

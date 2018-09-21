@@ -1,19 +1,19 @@
 public class NetServiceNode {
-    public PayNumNode[] payNumNode;
+    public LastMonthTrafiicNode[] lastMonthTrafiicNodes;
     private int[] space;
     private int[] num;
 
     public NetServiceNode(int[] s, int[] n) {
         this.space = s;
         this.num = n;
-        this.payNumNode = new PayNumNode[this.num[6]];
+        this.lastMonthTrafiicNodes = new LastMonthTrafiicNode[this.num[6]];
     }
 
     public void select(String[] ref, boolean isFinal) {
         if (isFinal) {
             for (int i = 0; i < this.num[6]; i++) {
                 try {
-                    this.payNumNode[i].select(ref, true);
+                    this.lastMonthTrafiicNodes[i].select(ref, true);
                 } catch (NullPointerException e) {
                 }
             }
@@ -21,21 +21,21 @@ public class NetServiceNode {
         }
 
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[6])].select(ref, false);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[15])) / this.space[6])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
-                this.payNumNode[this.num[6] - 1].select(ref, false);
+                this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
             } catch (NullPointerException x) {
-                this.payNumNode[this.num[6] - 1] = new PayNumNode();
-                this.payNumNode[this.num[6] - 1].select(ref, false);
+                this.lastMonthTrafiicNodes[this.num[6] - 1] = new LastMonthTrafiicNode(space,num);
+                this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[6])] = new PayNumNode();
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[6])].select(ref, false);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[15])) / this.space[6])] = new LastMonthTrafiicNode(space,num);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[15])) / this.space[6])].select(ref, false);
         }
     }
 
-    public PayNumNode find(int target) {
+    public LastMonthTrafiicNode find(int target) {
         int i = 0;
         while (true) {
             if (target + i < 0) {
@@ -45,8 +45,8 @@ public class NetServiceNode {
                 i*=-1;
                 continue;
             }
-            if (this.payNumNode[target + i] != null) {
-                return this.payNumNode[target + i];
+            if (this.lastMonthTrafiicNodes[target + i] != null) {
+                return this.lastMonthTrafiicNodes[target + i];
             }
             if (i <= 0) {
                 i--;

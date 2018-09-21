@@ -1,13 +1,13 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int[] SPLIT_SPACE = {30, 30, 300, 1, 1, 1, 100};
-    public static final int[] SPLIT_NUM = {200, 1000, 1000, 40, 5, 5, 1000};
+    public static final int[] SPLIT_SPACE = {30, 15, 200, 1, 1, 1, 500, 50};
+    public static final int[] SPLIT_NUM = {9, 6, 50, 40, 5, 5, 20, 20};
     public static final String readPath = "C:\\Users\\WML\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\WML\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
-    public static final int[] TRAIN_FIELD = {0, 500000};
-    public static final int[] TEST_FIELD = {500001, 620000};
+    public static final int[] TRAIN_FIELD = {0, 550000};
+    public static final int[] TEST_FIELD = {550001, 650000};
 
     public static void main(String[] args) throws IOException {
         int[] type = new int[15];
@@ -87,7 +87,7 @@ public class Maintest {
                     if (flag[6] >= SPLIT_NUM[6]) flag[6] = SPLIT_NUM[6] - 1;
 
                     String mid = String.valueOf(type[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
-                            find(flag[4]).find(flag[5]).find(flag[6]).first]);
+                            find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).first]);
                     bufferedWriter.write(mid);
                     if (mid.equals(s[25])) {
                         right++;
