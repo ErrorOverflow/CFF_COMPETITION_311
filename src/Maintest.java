@@ -1,8 +1,8 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int[] SPLIT_SPACE = {20, 10, 100, 1, 1, 1, 50};
-    public static final int[] SPLIT_NUM = {80, 1000, 1000, 40, 5, 5, 1000};
+    public static final int[] SPLIT_SPACE = {30, 30, 300, 1, 1, 1, 100};
+    public static final int[] SPLIT_NUM = {200, 1000, 1000, 40, 5, 5, 1000};
     public static final String readPath = "C:\\Users\\WML\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\WML\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
