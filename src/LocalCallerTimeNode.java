@@ -1,5 +1,5 @@
 public class LocalCallerTimeNode {
-    public OnlineTimeNode[] onlineTimeNode;
+    private OnlineTimeNode[] onlineTimeNode;
     private int[] space;
     private int[] num;
 
