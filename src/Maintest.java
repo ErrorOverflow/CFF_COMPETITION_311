@@ -1,10 +1,12 @@
 import java.io.*;
 
 public class Maintest {
-    public static final int[] SPLIT_SPACE = {30, 15, 200, 1, 1, 1, 500, 50};
-    public static final int[] SPLIT_NUM = {9, 6, 50, 40, 5, 5, 20, 20};
-    public static final String readPath = "C:\\Users\\WML\\Downloads\\train.csv";
-    public static final String testPath = "C:\\Users\\WML\\Downloads\\train.csv";
+    //0.LocalCallerTime --> 1.OnlineTime -->  2.MonthTraffic --> 3.ContractTime --> 4.LocalTrafficMonth
+    // --> 5.NetService --> 6.LastMonthTrafiic --> 7.PayNum
+    public static final int[] SPLIT_SPACE = {80, 3000, 400, 1, 1, 1, 50000, 500};
+    public static final int[] SPLIT_NUM = {9000, 6000, 5000, 4000, 5, 5, 20, 2000};
+    public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
+    public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
     public static final int[] TRAIN_FIELD = {0, 550000};
     public static final int[] TEST_FIELD = {550001, 650000};
