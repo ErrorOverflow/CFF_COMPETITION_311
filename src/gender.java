@@ -1,19 +1,19 @@
 public class gender {
-    public PayNumNode[] payNumNode;
+    public Service2CallerNode[] service2CallerNodes;
     private int[] space;
     private int[] num;
 
     public gender(int[] s, int[] n) {
         this.space = s;
         this.num = n;
-        this.payNumNode = new PayNumNode[this.num[8]];
+        this.service2CallerNodes = new Service2CallerNode[this.num[8]];
     }
 
     public void select(String[] ref, boolean isFinal) {
         if (isFinal) {
             for (int i = 0; i < this.num[8]; i++) {
                 try {
-                    this.payNumNode[i].select(ref, true);
+                    this.service2CallerNodes[i].select(ref, true);
                 } catch (NullPointerException e) {
                 }
             }
@@ -21,32 +21,32 @@ public class gender {
         }
 
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[8])].select(ref, false);
+            this.service2CallerNodes[(int) ((Double.valueOf(ref[19])) / this.space[8])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
-                this.payNumNode[this.num[7] - 1].select(ref, false);
+                this.service2CallerNodes[this.num[8] - 1].select(ref, false);
             } catch (NullPointerException x) {
-                this.payNumNode[this.num[7] - 1] = new PayNumNode();
-                this.payNumNode[this.num[7] - 1].select(ref, false);
+                this.service2CallerNodes[this.num[8] - 1] = new Service2CallerNode(space, num);
+                this.service2CallerNodes[this.num[8] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[8])] = new PayNumNode();
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[8])].select(ref, false);
+            this.service2CallerNodes[(int) ((Double.valueOf(ref[19])) / this.space[8])] = new Service2CallerNode(space, num);
+            this.service2CallerNodes[(int) ((Double.valueOf(ref[19])) / this.space[8])].select(ref, false);
         }
     }
 
-    public PayNumNode find(int target) {
+    public Service2CallerNode find(int target) {
         int i = 0;
         while (true) {
             if (target + i < 0) {
-                if(i<=0){
+                if (i <= 0) {
                     i--;
                 }
-                i*=-1;
+                i *= -1;
                 continue;
             }
-            if (this.payNumNode[target + i] != null) {
-                return this.payNumNode[target + i];
+            if (this.service2CallerNodes[target + i] != null) {
+                return this.service2CallerNodes[target + i];
             }
             if (i <= 0) {
                 i--;

@@ -25,7 +25,7 @@ public class LastMonthTrafiicNode {
         }
 
         try {
-            this.genders[(int) ((Double.valueOf(ref[20])) / this.space[7])].select(ref, false);
+            this.genders[(int) ((Double.valueOf(ref[18])) / this.space[7])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.genders[this.num[7] - 1].select(ref, false);
@@ -34,8 +34,8 @@ public class LastMonthTrafiicNode {
                 this.genders[this.num[7] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.genders[(int) ((Double.valueOf(ref[20])) / this.space[7])] = new gender(space, num);
-            this.genders[(int) ((Double.valueOf(ref[20])) / this.space[7])].select(ref, false);
+            this.genders[(int) ((Double.valueOf(ref[18])) / this.space[7])] = new gender(space, num);
+            this.genders[(int) ((Double.valueOf(ref[18])) / this.space[7])].select(ref, false);
         }
     }
 
