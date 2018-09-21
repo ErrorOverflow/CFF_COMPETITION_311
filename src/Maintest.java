@@ -1,10 +1,10 @@
 import java.io.*;
 
 public class Maintest {
-    //0.LocalCallerTime --> 1.OnlineTime -->  2.MonthTraffic --> 3.ContractTime --> 4.LocalTrafficMonth
-    // --> 5.NetService --> 6.LastMonthTrafiic --> 7.PayNum
-    public static final int[] SPLIT_SPACE = {80, 3000, 400, 1, 1, 1, 1, 10000};
-    public static final int[] SPLIT_NUM = {9000, 6000, 5000, 4000, 5, 5, 100, 2000};
+    //0.LocalCallerTime(FEE3) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
+    // --> 5.NetService(FEE4) --> 6.LastMonthTrafiic(FEE1)√ --> gender --> 7.PayNum
+    public static final int[] SPLIT_SPACE = {50, 30, 300, 10, 1, 40, 50, 1, 100};
+    public static final int[] SPLIT_NUM = {9000, 6000, 5000, 4000, 500, 500, 100, 100, 2000};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
@@ -57,10 +57,10 @@ public class Maintest {
                 bufferedWriter.write(",");
                 try {
                     int[] flag = new int[26];
-                    flag[0] = (int) (Double.valueOf(s[17]) / SPLIT_SPACE[0]);
+                    flag[0] = (int) (Double.valueOf(s[5]) / SPLIT_SPACE[0]);
                     if (flag[0] >= SPLIT_NUM[0]) flag[0] = SPLIT_NUM[0] - 1;
 
-                    flag[1] = (int) (Double.valueOf(s[2]) / SPLIT_SPACE[1]);
+                    flag[1] = (int) (Double.valueOf(s[4]) / SPLIT_SPACE[1]);
                     if (flag[1] >= SPLIT_NUM[1]) flag[1] = SPLIT_NUM[1] - 1;
 
                     flag[2] = (int) (Double.valueOf(s[7]) / SPLIT_SPACE[2]);
@@ -73,17 +73,20 @@ public class Maintest {
                     flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4]);
                     if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
 
-                    flag[5] = (int) (Double.valueOf(s[12]) / SPLIT_SPACE[5]);
+                    flag[5] = (int) (Double.valueOf(s[6]) / SPLIT_SPACE[5]);
                     if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
 
-                    flag[6] = (int) (Double.valueOf(s[11]) / SPLIT_SPACE[6]);
+                    flag[6] = (int) (Double.valueOf(s[3]) / SPLIT_SPACE[6]);
                     if (flag[6] >= SPLIT_NUM[6]) flag[6] = SPLIT_NUM[6] - 1;
 
-                    flag[7] = (int) (Double.valueOf(s[14]) / SPLIT_SPACE[7]);
+                    flag[7] = (int) (Double.valueOf(s[20]) / SPLIT_SPACE[7]);
                     if (flag[7] >= SPLIT_NUM[7]) flag[7] = SPLIT_NUM[7] - 1;
 
+                    flag[8] = (int) (Double.valueOf(s[14]) / SPLIT_SPACE[8]);
+                    if (flag[8] >= SPLIT_NUM[8]) flag[8] = SPLIT_NUM[8] - 1;
+
                     String mid = String.valueOf(TYPE[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
-                            find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).first]);
+                            find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).find(flag[8]).first]);
                     bufferedWriter.write(mid);
                     if (mid.equals(s[25])) {
                         right++;

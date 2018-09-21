@@ -20,7 +20,7 @@ public class LocalCallerTimeNode {
             return;
         }
         try {
-            this.onlineTimeNode[(int) ((Double.valueOf(ref[2])) / this.space[1])].select(ref, false);
+            this.onlineTimeNode[(int) ((Double.valueOf(ref[4])) / this.space[1])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.onlineTimeNode[this.num[1] - 1].select(ref, false);
@@ -29,8 +29,9 @@ public class LocalCallerTimeNode {
                 this.onlineTimeNode[this.num[1] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.onlineTimeNode[(int) ((Double.valueOf(ref[2])) / this.space[1])] = new OnlineTimeNode(space, num);
-            this.onlineTimeNode[(int) ((Double.valueOf(ref[2])) / this.space[1])].select(ref, false);
+            this.onlineTimeNode[(int) ((Double.valueOf(ref[4])) / this.space[1])] = new OnlineTimeNode(space, num);
+            this.onlineTimeNode[(int) ((Double.valueOf(ref[4])) / this.space[1])].select(ref, false);
+        } catch (NumberFormatException e){
         }
     }
 

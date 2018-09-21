@@ -24,7 +24,7 @@ public class start {
             return;
         }
         try {
-            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[17])) / this.space[0])].select(ref, false);
+            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[5])) / this.space[0])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.localCallerTimeNodes[this.num[0] - 1].select(ref, false);
@@ -33,8 +33,10 @@ public class start {
                 this.localCallerTimeNodes[this.num[0] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[17])) / this.space[0])] = new LocalCallerTimeNode(space, num);
-            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[17])) / this.space[0])].select(ref, false);
+            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[5])) / this.space[0])] = new LocalCallerTimeNode(space, num);
+            this.localCallerTimeNodes[(int) ((Double.valueOf(ref[5])) / this.space[0])].select(ref, false);
+        }catch (NumberFormatException e){
+
         }
     }
 

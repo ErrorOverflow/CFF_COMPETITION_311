@@ -21,7 +21,7 @@ public class NetServiceNode {
         }
 
         try {
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[11])) / this.space[6])].select(ref, false);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
@@ -30,8 +30,8 @@ public class NetServiceNode {
                 this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[11])) / this.space[6])] = new LastMonthTrafiicNode(space,num);
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[11])) / this.space[6])].select(ref, false);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])] = new LastMonthTrafiicNode(space,num);
+            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])].select(ref, false);
         }
     }
 
