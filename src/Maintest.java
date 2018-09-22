@@ -3,7 +3,7 @@ import java.io.*;
 public class Maintest {
     //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
     // --> 5.NetService(FEE4) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller --> 9..PayNum(NetService)
-    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 1000, 52, 44, 49, 1};
+    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 52, 29, 49, 1};
     public static final int[] SPLIT_NUM = {5000, 6000, 5000, 4000, 500, 500, 100, 1000, 1000, 2000};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
@@ -73,7 +73,7 @@ public class Maintest {
                     flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4]);
                     if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
 
-                    flag[5] = (int) (Double.valueOf(s[1]) / SPLIT_SPACE[5]);
+                    flag[5] = (int) (Double.valueOf(s[5]) / SPLIT_SPACE[5]);
                     if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
 
                     flag[6] = (int) (Double.valueOf(s[3]) / SPLIT_SPACE[6]);
