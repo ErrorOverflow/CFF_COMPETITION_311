@@ -38,7 +38,7 @@ public class LocalTrafficMonthNode {
     public NetServiceNode find(int target) {
         int i = 0;
         while (true) {
-            if (target + i < 0) {
+            if (target + i < 0 || target + i >= this.num[5]) {
                 if(i<=0){
                     i--;
                 }

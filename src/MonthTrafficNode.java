@@ -36,7 +36,7 @@ public class MonthTrafficNode {
     public ContractTimeNode find(int target) {
         int i = 0;
         while (true) {
-            if (target + i < 0) {
+            if (target + i < 0  || target + i >= this.num[3]) {
                 if(i<=0){
                     i--;
                 }

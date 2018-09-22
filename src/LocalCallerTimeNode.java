@@ -38,7 +38,7 @@ public class LocalCallerTimeNode {
     public OnlineTimeNode find(int target) {
         int i = 0;
         while (true) {
-            if (target + i < 0) {
+            if (target + i < 0  || target + i >= this.num[1]) {
                 if(i<=0){
                     i--;
                 }
