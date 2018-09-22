@@ -21,7 +21,7 @@ public class Service2CallerNode {
         }
 
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[9])].select(ref, false);
+            this.payNumNode[(int) ((Double.valueOf(ref[12])) / this.space[9])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.payNumNode[this.num[9] - 1].select(ref, false);
@@ -30,8 +30,8 @@ public class Service2CallerNode {
                 this.payNumNode[this.num[9] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[9])] = new PayNumNode();
-            this.payNumNode[(int) ((Double.valueOf(ref[14])) / this.space[9])].select(ref, false);
+            this.payNumNode[(int) ((Double.valueOf(ref[12])) / this.space[9])] = new PayNumNode();
+            this.payNumNode[(int) ((Double.valueOf(ref[12])) / this.space[9])].select(ref, false);
         }
     }
 

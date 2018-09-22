@@ -1,10 +1,10 @@
 import java.io.*;
 
 public class Maintest {
-    //0.LocalCallerTime(FEE3) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
-    // --> 5.NetService(FEE4) --> 6.LastMonthTrafiic(FEE1)√ --> gender(Service_1_caller) --> 7.PayNum
-    public static final int[] SPLIT_SPACE = {50, 30, 300, 10, 1, 40, 50, 60, 50, 100};
-    public static final int[] SPLIT_NUM = {9000, 6000, 5000, 4000, 500, 500, 100, 1000, 1000, 2000};
+    //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
+    // --> 5.NetService(FEE4) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller --> 9..PayNum(NetService)
+    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 1000, 52, 44, 49, 1};
+    public static final int[] SPLIT_NUM = {5000, 6000, 5000, 4000, 500, 500, 100, 1000, 1000, 2000};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
@@ -57,7 +57,7 @@ public class Maintest {
                 bufferedWriter.write(",");
                 try {
                     int[] flag = new int[26];
-                    flag[0] = (int) (Double.valueOf(s[5]) / SPLIT_SPACE[0]);
+                    flag[0] = (int) (Double.valueOf(s[8]) / SPLIT_SPACE[0]);
                     if (flag[0] >= SPLIT_NUM[0]) flag[0] = SPLIT_NUM[0] - 1;
 
                     flag[1] = (int) (Double.valueOf(s[4]) / SPLIT_SPACE[1]);
@@ -73,7 +73,7 @@ public class Maintest {
                     flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4]);
                     if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
 
-                    flag[5] = (int) (Double.valueOf(s[6]) / SPLIT_SPACE[5]);
+                    flag[5] = (int) (Double.valueOf(s[1]) / SPLIT_SPACE[5]);
                     if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
 
                     flag[6] = (int) (Double.valueOf(s[3]) / SPLIT_SPACE[6]);
@@ -85,7 +85,7 @@ public class Maintest {
                     flag[8] = (int) (Double.valueOf(s[19]) / SPLIT_SPACE[8]);
                     if (flag[8] >= SPLIT_NUM[8]) flag[8] = SPLIT_NUM[8] - 1;
 
-                    flag[9] = (int) (Double.valueOf(s[14]) / SPLIT_SPACE[9]);
+                    flag[9] = (int) (Double.valueOf(s[12]) / SPLIT_SPACE[9]);
                     if (flag[9] >= SPLIT_NUM[9]) flag[9] = SPLIT_NUM[9] - 1;
 
                     String mid = String.valueOf(TYPE[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
