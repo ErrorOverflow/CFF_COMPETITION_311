@@ -2,9 +2,10 @@ import java.io.*;
 
 public class Maintest {
     //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
-    // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller --> 9..PayNum(LastMonthTraffic)
-    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 52, 31, 49, 55};
-    public static final int[] SPLIT_NUM = {5, 10, 3, 4, 5, 5, 16, 2, 16, 70};
+    // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller
+    // --> 8._1Node() --> 9..PayNum(LastMonthTraffic)
+    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 52, 31, 49, 20000, 55};
+    public static final int[] SPLIT_NUM = {5, 10, 3, 4, 5, 5, 16, 2, 16, 5, 70};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
     public static final String writePath = "C:\\result.csv";
@@ -85,11 +86,15 @@ public class Maintest {
                     flag[8] = (int) (Double.valueOf(s[19]) / SPLIT_SPACE[8]);
                     if (flag[8] >= SPLIT_NUM[8]) flag[8] = SPLIT_NUM[8] - 1;
 
-                    flag[9] = (int) (Double.valueOf(s[15]) / SPLIT_SPACE[9]);
+                    flag[9] = (int) (Double.valueOf(s[16]) / SPLIT_SPACE[9]);
                     if (flag[9] >= SPLIT_NUM[9]) flag[9] = SPLIT_NUM[9] - 1;
 
+                    flag[10] = (int) (Double.valueOf(s[15]) / SPLIT_SPACE[10]);
+                    if (flag[10] >= SPLIT_NUM[10]) flag[10] = SPLIT_NUM[10] - 1;
+
                     String mid = String.valueOf(TYPE[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
-                            find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).find(flag[8]).find(flag[9]).first]);
+                            find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).find(flag[8]).find(flag[9]).
+                            find(flag[10]).first]);
                     bufferedWriter.write(mid);
                     if (mid.equals(s[25])) {
                         right++;
