@@ -4,13 +4,13 @@ public class Maintest {
     //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
     // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller
     // --> 8._1Node() --> 9..PayNum(LastMonthTraffic)
-    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 52, 31, 49, 20000, 55};
-    public static final int[] SPLIT_NUM = {5, 10, 3, 4, 5, 5, 16, 2, 16, 5, 70};
-    public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
-    public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train.csv";
+    public static final int[] SPLIT_SPACE = {1, 32, 437, 11, 1, 41, 52, 31, 49, 2000, 55};
+    public static final int[] SPLIT_NUM = {5, 10, 5, 4, 5, 5, 16, 2, 16, 4, 70};
+    public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
+    public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String writePath = "C:\\result.csv";
-    public static final int[] TRAIN_FIELD = {0, 550000};
-    public static final int[] TEST_FIELD = {550001, 650000};
+    public static final int[] TRAIN_FIELD = {0, 650000};
+    public static final int[] TEST_FIELD = {650001, 1000000};
     public static final int[] TYPE =
             {
                     89016252, 89016253, 89016259, 89950166, 89950167,
@@ -45,7 +45,7 @@ public class Maintest {
             bufferedReader = new BufferedReader(fileReader);
             String readline;
 
-            bufferedWriter.write("user_id,predict\n");
+            bufferedWriter.write("user_id,current_service\n");
             readline = bufferedReader.readLine();
             int test_flag = 0;
             while ((readline = bufferedReader.readLine()) != null) {
@@ -109,12 +109,13 @@ public class Maintest {
                 bufferedWriter.flush();
                 test_flag++;
             }
-
             System.out.println(illegal);
             System.out.println(right);
             System.out.println(wrong);
+            System.out.println((double)right/((double)right+(double)illegal+(double)(wrong)));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
