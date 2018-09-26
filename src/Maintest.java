@@ -4,8 +4,8 @@ public class Maintest {
     //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
     // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller
     // --> 8._1Node(local_traffic_month) --> 9..PayNum(LastMonthTraffic)
-    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 20000, 61};
-    public static final int[] SPLIT_NUM = {5, 10, 3, 4, 5, 5, 4, 2, 10, 2, 58};
+    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 1, 61};
+    public static final int[] SPLIT_NUM = {5, 10, 4, 4, 5, 5, 4, 2, 10, 12, 58};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String writePath = "C:\\result.csv";
@@ -86,7 +86,7 @@ public class Maintest {
                     flag[8] = (int) (Double.valueOf(s[19]) / SPLIT_SPACE[8]);
                     if (flag[8] >= SPLIT_NUM[8]) flag[8] = SPLIT_NUM[8] - 1;
 
-                    flag[9] = (int) (Double.valueOf(s[16]) / SPLIT_SPACE[9]);
+                    flag[9] = (int) (Double.valueOf(s[9]) / SPLIT_SPACE[9]);
                     if (flag[9] >= SPLIT_NUM[9]) flag[9] = SPLIT_NUM[9] - 1;
 
                     flag[10] = (int) (Double.valueOf(s[15]) / SPLIT_SPACE[10]);

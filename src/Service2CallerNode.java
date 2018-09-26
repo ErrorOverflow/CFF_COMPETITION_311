@@ -21,7 +21,7 @@ public class Service2CallerNode {
         }
 
         try {
-            this._1Nodes[(int) ((Double.valueOf(ref[16])) / this.space[9])].select(ref, false);
+            this._1Nodes[(int) ((Double.valueOf(ref[9])) / this.space[9])].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this._1Nodes[this.num[9] - 1].select(ref, false);
@@ -30,8 +30,8 @@ public class Service2CallerNode {
                 this._1Nodes[this.num[9] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this._1Nodes[(int) ((Double.valueOf(ref[16])) / this.space[9])] = new _1Node(space, num);
-            this._1Nodes[(int) ((Double.valueOf(ref[16])) / this.space[9])].select(ref, false);
+            this._1Nodes[(int) ((Double.valueOf(ref[9])) / this.space[9])] = new _1Node(space, num);
+            this._1Nodes[(int) ((Double.valueOf(ref[9])) / this.space[9])].select(ref, false);
         }
     }
 
