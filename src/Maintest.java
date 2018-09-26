@@ -112,7 +112,7 @@ public class Maintest {
             System.out.println(illegal);
             System.out.println(right);
             System.out.println(wrong);
-            System.out.println((double)right/((double)right+(double)illegal+(double)(wrong)));
+            System.out.println((double) right / ((double) right + (double) illegal + (double) (wrong)));
         } catch (IOException e) {
             e.printStackTrace();
         }
