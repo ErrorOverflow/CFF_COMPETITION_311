@@ -1,5 +1,5 @@
 public class NetServiceNode {
-    public LastMonthTrafiicNode[] lastMonthTrafiicNodes;
+    private LastMonthTrafiicNode[] lastMonthTrafiicNodes;
     private int[] space;
     private int[] num;
 

@@ -34,23 +34,24 @@ public class ContractTimeNode {
             this.localTrafficMonthNodes[(int) ((Double.valueOf(ref[0])) / this.space[4])].select(ref, false);
         }
     }
+
     public LocalTrafficMonthNode find(int target) {
         int i = 0;
         while (true) {
-            if (target + i < 0  || target + i >= this.num[4]) {
-                if(i<=0){
+            if (target + i < 0 || target + i >= this.num[4]) {
+                if (i <= 0) {
                     i--;
                 }
-                i*=-1;
+                i *= -1;
                 continue;
             }
             if (this.localTrafficMonthNodes[target + i] != null) {
                 return this.localTrafficMonthNodes[target + i];
             }
-            if(i<=0){
+            if (i <= 0) {
                 i--;
             }
-            i*=-1;
+            i *= -1;
         }
     }
 }

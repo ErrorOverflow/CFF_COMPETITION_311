@@ -1,5 +1,5 @@
 public class MonthTrafficNode {
-    public ContractTimeNode[] contractTimeNodes;
+    private ContractTimeNode[] contractTimeNodes;
     private int[] space;
     private int[] num;
 

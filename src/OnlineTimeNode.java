@@ -1,5 +1,5 @@
 public class OnlineTimeNode {
-    public MonthTrafficNode[] monthTrafficNodes;
+    private MonthTrafficNode[] monthTrafficNodes;
     private int[] space;
     private int[] num;
 

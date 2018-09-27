@@ -3,7 +3,7 @@
  * @date 2018-09-21 14:26
  */
 public class LastMonthTrafiicNode {
-    public gender[] genders;
+    private gender[] genders;
     private int[] space;
     private int[] num;
 
