@@ -11,12 +11,12 @@ abstract class Divide {
             };
     public static final int[] DIVIDE_NODE3 =
             {
-                    0, 11, 22, 33
+                    0, 12, 24, 36
             };
     public static final int[] DIVIDE_NODE4 = {};
     public static final int[] DIVIDE_NODE5 =
             {
-                    0, 41, 82, 123, 164
+                    0, 42, 82, 180, 290
             };
     public static final int[] DIVIDE_NODE6 =
             {
@@ -31,10 +31,24 @@ abstract class Divide {
             };
     public static final int[] DIVIDE_NODE9 =
             {
-                    0,1,2,3,4,5,6,7,8,9,10,11,12
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
             };
     public static final int[] DIVIDE_NODE10 =
             {
 
             };
+
+    public static int divide(double ref, int[] divide_node) {
+        int[] d = divide_node;
+        for (int i = 0; i < d.length; i++) {
+            if (i == d.length - 1) {
+                return i;
+            } else {
+                if (d[i] <= ref && ref < d[i + 1]) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
 }

@@ -64,20 +64,16 @@ public class Maintest {
                     flag[1] = (int) (Double.valueOf(s[4]) / SPLIT_SPACE[1]);
                     if (flag[1] >= SPLIT_NUM[1]) flag[1] = SPLIT_NUM[1] - 1;
 
-                    flag[2] = OnlineTimeNode.divide(Double.valueOf(s[7]));
+                    flag[2] = Divide.divide(Double.valueOf(s[7]),Divide.DIVIDE_NODE2);
 
-                    flag[3] = (int) (Double.valueOf(s[10]) / SPLIT_SPACE[3]);
-                    if (flag[3] >= SPLIT_NUM[3]) flag[3] = SPLIT_NUM[3] - 1;
-                    else if (flag[3] < 0) flag[3] = 0;
+                    flag[3] = Divide.divide(Double.valueOf(s[10]),Divide.DIVIDE_NODE3);
 
                     flag[4] = (int) (Double.valueOf(s[0]) / SPLIT_SPACE[4]);
                     if (flag[4] >= SPLIT_NUM[4]) flag[4] = SPLIT_NUM[4] - 1;
 
-                    flag[5] = (int) (Double.valueOf(s[5]) / SPLIT_SPACE[5]);
-                    if (flag[5] >= SPLIT_NUM[5]) flag[5] = SPLIT_NUM[5] - 1;
+                    flag[5] = Divide.divide(Double.valueOf(s[5]),Divide.DIVIDE_NODE5);
 
-                    flag[6] = (int) (Double.valueOf(s[3]) / SPLIT_SPACE[6]);
-                    if (flag[6] >= SPLIT_NUM[6]) flag[6] = SPLIT_NUM[6] - 1;
+                    flag[6] = Divide.divide(Double.valueOf(s[3]),Divide.DIVIDE_NODE6);
 
                     flag[7] = (int) (Double.valueOf(s[18]) / SPLIT_SPACE[7]);
                     if (flag[7] >= SPLIT_NUM[7]) flag[7] = SPLIT_NUM[7] - 1;

@@ -21,10 +21,10 @@ public class OnlineTimeNode {
         }
 
         try {
-            this.monthTrafficNodes[divide(Double.valueOf(ref[7]))].select(ref, false);
+            this.monthTrafficNodes[Divide.divide(Double.valueOf(ref[7]),Divide.DIVIDE_NODE2)].select(ref, false);
         } catch (NullPointerException e) {
-            this.monthTrafficNodes[divide(Double.valueOf(ref[7]))] = new MonthTrafficNode(this.space, this.num);
-            this.monthTrafficNodes[divide(Double.valueOf(ref[7]))].select(ref, false);
+            this.monthTrafficNodes[Divide.divide(Double.valueOf(ref[7]),Divide.DIVIDE_NODE2)] = new MonthTrafficNode(this.space, this.num);
+            this.monthTrafficNodes[Divide.divide(Double.valueOf(ref[7]),Divide.DIVIDE_NODE2)].select(ref, false);
         }
     }
 
@@ -46,19 +46,5 @@ public class OnlineTimeNode {
             }
             i *= -1;
         }
-    }
-
-    public static int divide(double ref) {
-        int[] d = Divide.DIVIDE_NODE2;
-        for (int i = 0; i < d.length; i++) {
-            if (i == d.length - 1) {
-                return i;
-            } else {
-                if (d[i] <= ref && ref < d[i + 1]) {
-                    return i;
-                }
-            }
-        }
-        return 0;
     }
 }

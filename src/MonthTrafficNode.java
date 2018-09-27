@@ -19,17 +19,10 @@ public class MonthTrafficNode {
             return;
         }
         try {
-            this.contractTimeNodes[(int) ((Double.valueOf(ref[10])) / this.space[3])].select(ref, false);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            try {
-                this.contractTimeNodes[this.num[3] - 1].select(ref, false);
-            } catch (NullPointerException x) {
-                this.contractTimeNodes[this.num[3] - 1] = new ContractTimeNode(this.space, this.num);
-                this.contractTimeNodes[this.num[3] - 1].select(ref, false);
-            }
+            this.contractTimeNodes[Divide.divide(Double.valueOf(ref[10]),Divide.DIVIDE_NODE3)].select(ref, false);
         } catch (NullPointerException e) {
-            this.contractTimeNodes[(int) ((Double.valueOf(ref[10])) / this.space[3])] = new ContractTimeNode(this.space, this.num);
-            this.contractTimeNodes[(int) ((Double.valueOf(ref[10])) / this.space[3])].select(ref,false);
+            this.contractTimeNodes[Divide.divide(Double.valueOf(ref[10]),Divide.DIVIDE_NODE3)] = new ContractTimeNode(this.space, this.num);
+            this.contractTimeNodes[Divide.divide(Double.valueOf(ref[10]),Divide.DIVIDE_NODE3)].select(ref,false);
         }
     }
 
@@ -52,4 +45,5 @@ public class MonthTrafficNode {
             i*=-1;
         }
     }
+
 }

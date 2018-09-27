@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Div;
+
 public class NetServiceNode {
     private LastMonthTrafiicNode[] lastMonthTrafiicNodes;
     private int[] space;
@@ -21,17 +23,10 @@ public class NetServiceNode {
         }
 
         try {
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])].select(ref, false);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            try {
-                this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
-            } catch (NullPointerException x) {
-                this.lastMonthTrafiicNodes[this.num[6] - 1] = new LastMonthTrafiicNode(space,num);
-                this.lastMonthTrafiicNodes[this.num[6] - 1].select(ref, false);
-            }
+            this.lastMonthTrafiicNodes[Divide.divide(Double.valueOf(ref[3]),Divide.DIVIDE_NODE6)].select(ref, false);
         } catch (NullPointerException e) {
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])] = new LastMonthTrafiicNode(space,num);
-            this.lastMonthTrafiicNodes[(int) ((Double.valueOf(ref[3])) / this.space[6])].select(ref, false);
+            this.lastMonthTrafiicNodes[Divide.divide(Double.valueOf(ref[3]),Divide.DIVIDE_NODE6)] = new LastMonthTrafiicNode(space,num);
+            this.lastMonthTrafiicNodes[Divide.divide(Double.valueOf(ref[3]),Divide.DIVIDE_NODE6)].select(ref, false);
         }
     }
 
