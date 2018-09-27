@@ -59,8 +59,5 @@ abstract class UserInfo {
         this.former_complaint_fee=Float.valueOf(s[24]);
         this.current_service=Integer.valueOf(s[25]);
         this.USERID=s[26];
-
-        this.calculator=cal;
-        this.calculator.addGenda(this.current_service,this.contract_type);
     }
 }
