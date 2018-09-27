@@ -5,7 +5,7 @@ public class Maintest {
     // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller
     // --> 9._1Node(contract_type) --> 10.PayNum(LastMonthTraffic)
     public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 1, 61};
-    public static final int[] SPLIT_NUM = {5, 10, 4, 4, 5, 5, 4, 2, 11, 6, 58};
+    public static final int[] SPLIT_NUM = {5, 10, 4, 4, 5, 5, 5, 2, 5, 6, 20};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String writePath = "C:\\result.csv";
@@ -82,8 +82,7 @@ public class Maintest {
 
                     flag[9] = Divide.divide(Double.valueOf(s[9]), Divide.DIVIDE_NODE9);
 
-                    flag[10] = (int) (Double.valueOf(s[15]) / SPLIT_SPACE[10]);
-                    if (flag[10] >= SPLIT_NUM[10]) flag[10] = SPLIT_NUM[10] - 1;
+                    flag[10] = Divide.divide(Double.valueOf(s[15]),Divide.DIVIDE_NODE10);
 
                     String mid = String.valueOf(TYPE[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
                             find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).find(flag[8]).find(flag[9]).

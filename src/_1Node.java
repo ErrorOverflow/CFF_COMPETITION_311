@@ -21,7 +21,7 @@ public class _1Node {
         }
 
         try {
-            this.payNumNode[(int) ((Double.valueOf(ref[15])) / this.space[10])].select(ref, false);
+            this.payNumNode[Divide.divide(Double.valueOf(ref[15]),Divide.DIVIDE_NODE10)].select(ref, false);
         } catch (ArrayIndexOutOfBoundsException e) {
             try {
                 this.payNumNode[this.num[10] - 1].select(ref, false);
@@ -30,8 +30,8 @@ public class _1Node {
                 this.payNumNode[this.num[10] - 1].select(ref, false);
             }
         } catch (NullPointerException e) {
-            this.payNumNode[(int) ((Double.valueOf(ref[15])) / this.space[10])] = new PayNumNode();
-            this.payNumNode[(int) ((Double.valueOf(ref[15])) / this.space[10])].select(ref, false);
+            this.payNumNode[Divide.divide(Double.valueOf(ref[15]),Divide.DIVIDE_NODE10)] = new PayNumNode();
+            this.payNumNode[Divide.divide(Double.valueOf(ref[15]),Divide.DIVIDE_NODE10)].select(ref, false);
         }
     }
 

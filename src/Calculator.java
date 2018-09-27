@@ -1,6 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Vector;
 
-abstract class Calculator {
+public class Calculator {
     private Vector<Integer> current_type = new Vector<>(100);
 
     private TypeTag type_89016252;
@@ -18,6 +22,14 @@ abstract class Calculator {
     private TypeTag type_99999827;
     private TypeTag type_99999828;
     private TypeTag type_99999830;
+
+    public static void main(String[] args) throws IOException {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 10; j++)
+                System.out.print(61 * (10 * i + j) + ",");
+            System.out.println();
+        }
+    }
 
     private Calculator(TypeTag[] mid) {
         this.type_89016252 = mid[0];
@@ -44,7 +56,7 @@ abstract class Calculator {
         this.current_type.add(new Integer(i));
     }
 
-    private void addGenda(int type, float n) {
+    public void addGenda(int type, float n) {
         switch (type) {
             case 89016252: {
                 this.type_89016252.add(n);
