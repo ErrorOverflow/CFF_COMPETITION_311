@@ -3,9 +3,9 @@ import java.io.*;
 public class Maintest {
     //0.LocalCallerTime(ManyOverBill) --> 1.OnlineTime(FEE2) -->  2.MonthTraffic --> 3.ContractTime√ --> 4.LocalTrafficMonth(ServiceType)√
     // --> 5.NetService(FEE3) --> 6.LastMonthTrafiic(FEE1)√ --> 7.gender(Service_1_caller) --> 8.Service_2_caller
-    // --> 8._1Node(contract_type) --> 9..PayNum(LastMonthTraffic)
-    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 1, 61};
-    public static final int[] SPLIT_NUM = {5, 10, 4, 4, 5, 5, 4, 2, 11, 12, 58};
+    // --> 9._1Node(contract_type) --> 10.PayNum(LastMonthTraffic)
+    public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 1,  61};
+    public static final int[] SPLIT_NUM =   {5, 10, 4  , 4 , 5, 5,  4,  2, 11, 12, 58};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
     public static final String writePath = "C:\\result.csv";
@@ -64,8 +64,7 @@ public class Maintest {
                     flag[1] = (int) (Double.valueOf(s[4]) / SPLIT_SPACE[1]);
                     if (flag[1] >= SPLIT_NUM[1]) flag[1] = SPLIT_NUM[1] - 1;
 
-                    flag[2] = (int) (Double.valueOf(s[7]) / SPLIT_SPACE[2]);
-                    if (flag[2] >= SPLIT_NUM[2]) flag[2] = SPLIT_NUM[2] - 1;
+                    flag[2] = OnlineTimeNode.divide(Double.valueOf(s[7]));
 
                     flag[3] = (int) (Double.valueOf(s[10]) / SPLIT_SPACE[3]);
                     if (flag[3] >= SPLIT_NUM[3]) flag[3] = SPLIT_NUM[3] - 1;
