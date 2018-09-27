@@ -1,36 +1,36 @@
-public class UserInfo {
-    public String USERID;
-    public int current_type;
-    public int service_type;
-    public int is_mix_service;
-    public int online_time;
-    public float total_fee_1;
-    public float total_fee_2;
-    public float total_fee_3;
-    public float total_fee_4;
-    public float month_traffic;
-    public int many_over_bill;
-    public int contract_type;
-    public int contract_time;
-    public int is_promise_low_consume;
-    public int net_service;
-    public int pay_times;
-    public float pay_num;
-    public float last_month_traffic;
-    public float local_traffic_month;
-    public float local_caller_time;
-    public float service1_caller_time;
-    public float service2_caller_time;
-    public int gender;
-    public int age;
-    public int complaint_level;
-    public int former_complaint_num;
-    public float former_complaint_fee;
-    public int current_service;
+abstract class UserInfo {
+    private String USERID;
+    private int current_type;
+    private int service_type;
+    private int is_mix_service;
+    private int online_time;
+    private float total_fee_1;
+    private float total_fee_2;
+    private float total_fee_3;
+    private float total_fee_4;
+    private float month_traffic;
+    private int many_over_bill;
+    private int contract_type;
+    private int contract_time;
+    private int is_promise_low_consume;
+    private int net_service;
+    private int pay_times;
+    private float pay_num;
+    private float last_month_traffic;
+    private float local_traffic_month;
+    private float local_caller_time;
+    private float service1_caller_time;
+    private float service2_caller_time;
+    private int gender;
+    private int age;
+    private int complaint_level;
+    private int former_complaint_num;
+    private float former_complaint_fee;
+    private int current_service;
 
-    public Calculator calculator;
+    private Calculator calculator;
 
-    public UserInfo(String str,Calculator cal){
+    private UserInfo(String str,Calculator cal){
         String[] s=str.split(",");
         this.service_type=Integer.valueOf(s[0]);
         this.is_mix_service=Integer.valueOf(s[1]);
