@@ -7,10 +7,10 @@ public class Maintest {
     public static final int[] SPLIT_SPACE = {1, 32, 527, 11, 1, 41, 51, 1, 51, 1, 61};
     public static final int[] SPLIT_NUM = {5, 10, 4, 4, 5, 5, 5, 2, 5, 6, 20};
     public static final String readPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
-    public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv";
+    public static final String testPath = "C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv";
     public static final String writePath = "C:\\result.csv";
-    public static final int[] TRAIN_FIELD = {0, 650000};
-    public static final int[] TEST_FIELD = {650001, 1000000};
+    public static final int[] TRAIN_FIELD = {0, 950000};
+    public static final int[] TEST_FIELD = {0, 1000000};
     public static final int[] TYPE =
             {
                     89016252, 89016253, 89016259, 89950166, 89950167,
@@ -82,7 +82,7 @@ public class Maintest {
 
                     flag[9] = Divide.divide(Double.valueOf(s[9]), Divide.DIVIDE_NODE9);
 
-                    flag[10] = Divide.divide(Double.valueOf(s[15]),Divide.DIVIDE_NODE10);
+                    flag[10] = Divide.divide(Double.valueOf(s[15]), Divide.DIVIDE_NODE10);
 
                     String mid = String.valueOf(TYPE[zero.find(flag[0]).find(flag[1]).find(flag[2]).find(flag[3]).
                             find(flag[4]).find(flag[5]).find(flag[6]).find(flag[7]).find(flag[8]).find(flag[9]).

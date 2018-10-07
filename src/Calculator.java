@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 public class Calculator {
@@ -24,11 +21,29 @@ public class Calculator {
     private TypeTag type_99999830;
 
     public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 10; j++)
-                System.out.print(61 * (10 * i + j) + ",");
-            System.out.println();
+        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv");
+        FileWriter fileWriter = new FileWriter("C:\\train_all.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        String getLine;
+        while ((getLine = bufferedReader.readLine()) != null) {
+            String[] s = getLine.split(",");
+            String writeLine = "";
+            for (int i = 0; i < s.length; i++) {
+                if (i == 20 || i==23 || i==24 || i==1 || i==22 || i==11 || i==1 || i==14) {
+                    continue;
+                } else {
+                    writeLine += s[i];
+                }
+                if (i != 26) {
+                    writeLine += ",";
+                }else{
+                    writeLine += "\n";
+                }
+            }
+            bufferedWriter.write(writeLine);
         }
+        bufferedWriter.flush();
     }
 
     private Calculator(TypeTag[] mid) {
