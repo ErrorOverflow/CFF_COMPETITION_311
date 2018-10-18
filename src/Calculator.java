@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Vector;
+import java.math.*;
 
 public class Calculator {
     private Vector<Integer> current_type = new Vector<>(100);
@@ -21,27 +22,94 @@ public class Calculator {
     private TypeTag type_99999830;
 
     public static void main(String[] args) throws IOException {
-        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_all.csv");
-        FileWriter fileWriter = new FileWriter("C:\\train_all.csv");
+        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\test_pre.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String getLine;
+        String getLine = bufferedReader.readLine();
+        String[] set = getLine.split(",");
+        for (int i = 0; i <= set.length + 1; i++) {
+            if (i == set.length - 1) {
+                bufferedWriter.write("fee,");
+            } else if (i == set.length) {
+                bufferedWriter.write("call,");
+            } else if (i == set.length + 1) {
+                bufferedWriter.write(set[i - 2]);
+            } else {
+                bufferedWriter.write(set[i]);
+                bufferedWriter.write(",");
+            }
+        }
+        bufferedWriter.write("\n");
+        int line = 0;
         while ((getLine = bufferedReader.readLine()) != null) {
             String[] s = getLine.split(",");
             String writeLine = "";
+            boolean isFormat = true;
             for (int i = 0; i < s.length; i++) {
-                if (i == 20 || i==23 || i==24 || i==1 || i==22 || i==11 || i==1 || i==14) {
-                    continue;
-                } else {
-                    writeLine += s[i];
-                }
-                if (i != 26) {
-                    writeLine += ",";
-                }else{
-                    writeLine += "\n";
+                if (s[i].equals("\\N")) {
+                    s[i] = "0";
                 }
             }
-            bufferedWriter.write(writeLine);
+            for (int i = 0; i <= s.length + 1; i++) {
+                if (i == s.length - 1) {
+                    double ave = 0;
+                    double fee = 0;
+                    try {
+                        ave = ((Double.valueOf(s[3]) + Double.valueOf(s[4]) + Double.valueOf(s[5]) + Double.valueOf(s[6])) / 4);
+                        if (ave != 0)
+                            fee = (Math.pow(((Double.valueOf(s[3]) - ave)), 2) +
+                                    Math.pow(((Double.valueOf(s[4]) - ave)), 2) +
+                                    Math.pow(((Double.valueOf(s[5]) - ave)), 2) +
+                                    Math.pow(((Double.valueOf(s[6]) - ave)), 2)) / ave;
+                        BigDecimal b = new BigDecimal(fee);
+                        fee = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                        writeLine += String.valueOf(fee);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println(fee);
+                    }
+                    /*try {
+                        writeLine += Double.valueOf(s[i]);
+                    } catch (NumberFormatException e) {
+                        System.out.println(line);
+                        isFormat = false;
+                    }*/
+                } else if (i == s.length) {
+                    double ave = 0;
+                    double fee = 0;
+                    try {
+                        ave = ((Double.valueOf(s[18]) + Double.valueOf(s[19])) / 4);
+                        if (ave != 0)
+                            fee = (Math.pow(((Double.valueOf(s[18]) - ave)), 2) +
+                                    Math.pow(((Double.valueOf(s[19]) - ave)), 2)) / ave;
+                        BigDecimal b = new BigDecimal(fee);
+                        fee = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                        writeLine += String.valueOf(fee);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println(fee);
+                    }
+                    /*try {
+                        writeLine += Double.valueOf(s[i]);
+                    } catch (NumberFormatException e) {
+                        System.out.println(line);
+                        isFormat = false;
+                    }*/
+                } else if (i < s.length - 1) {
+                    writeLine += s[i];
+                } else if (i == s.length + 1) {
+                    writeLine += s[i - 2];
+                }
+                if (i != s.length + 1) {
+                    writeLine += ",";
+                } else {
+                    writeLine += "\n";
+                }
+                line++;
+            }
+            if (isFormat)
+                bufferedWriter.write(writeLine);
         }
         bufferedWriter.flush();
     }
