@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Random;
 import java.util.Vector;
 import java.math.*;
 
@@ -22,7 +23,28 @@ public class Calculator {
     private TypeTag type_99999830;
 
     public static void main(String[] args) throws IOException {
-        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv");
+        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_dup_del.csv");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_mix.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        String getLine = bufferedReader.readLine();
+        bufferedWriter.write(getLine);
+        bufferedWriter.write("\n");
+        while ((getLine = bufferedReader.readLine()) != null) {
+            String[] s = getLine.split(",");
+            if (Double.valueOf(s[3]) % 1 != 0 && (Double.valueOf(s[14]) % 1.0 + Double.valueOf(s[3])) % 1.0 == 0) {
+                s[3] = String.valueOf(Double.valueOf(s[14]) % 1.0 + Double.valueOf(s[3]));
+                s[14] = String.valueOf(Double.valueOf(s[14]) - (Double.valueOf(s[14]) % 1));
+                System.out.println(getLine + " " + s[3] + " " + s[14]);
+            }
+            for (int i = 0; i < s.length; i++) {
+                bufferedWriter.write(s[i]);
+                bufferedWriter.write(",");
+            }
+            bufferedWriter.write("\n");
+            bufferedWriter.flush();
+        }
+     /* FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\test_pre.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -69,12 +91,12 @@ public class Calculator {
                         e.printStackTrace();
                         System.out.println(fee);
                     }
-                    /*try {
+                    try {
                         writeLine += Double.valueOf(s[i]);
                     } catch (NumberFormatException e) {
                         System.out.println(line);
                         isFormat = false;
-                    }*/
+                    }
                 } else if (i == s.length) {
                     double ave = 0;
                     double fee = 0;
@@ -90,12 +112,12 @@ public class Calculator {
                         e.printStackTrace();
                         System.out.println(fee);
                     }
-                    /*try {
+                    try {
                         writeLine += Double.valueOf(s[i]);
                     } catch (NumberFormatException e) {
                         System.out.println(line);
                         isFormat = false;
-                    }*/
+                    }
                 } else if (i < s.length - 1) {
                     writeLine += s[i];
                 } else if (i == s.length + 1) {
@@ -112,6 +134,7 @@ public class Calculator {
                 bufferedWriter.write(writeLine);
         }
         bufferedWriter.flush();
+        */
     }
 
     private Calculator(TypeTag[] mid) {
