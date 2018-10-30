@@ -23,6 +23,29 @@ public class Calculator {
     private TypeTag type_99999830;
 
     public static void main(String[] args) throws IOException {
+        /*
+         fresh //N
+         */
+        FileReader fileReader = new FileReader("C:\\Users\\WML\\Documents\\test_2.csv");
+        FileWriter fileWriter = new FileWriter("C:\\Users\\WML\\Documents\\test_2_fresh.csv");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        String getLine = bufferedReader.readLine();
+        bufferedWriter.write(getLine);
+        bufferedWriter.write("\n");
+        while ((getLine = bufferedReader.readLine()) != null) {
+            if (getLine.matches("(\\S)*\\\\N(\\S)*")) {
+                getLine = getLine.replace("\\N", "0");
+                System.out.println(getLine);
+            }
+            bufferedWriter.write(getLine);
+            bufferedWriter.write("\n");
+        }
+        bufferedWriter.flush();
+        /*
+        wash //N
+         */
+        /*
         FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_dup_del.csv");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_mix.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -56,6 +79,7 @@ public class Calculator {
             bufferedWriter.write("\n");
             bufferedWriter.flush();
         }
+        */
      /* FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\test_pre.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
