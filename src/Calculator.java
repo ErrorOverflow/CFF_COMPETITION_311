@@ -23,29 +23,7 @@ public class Calculator {
     private TypeTag type_99999830;
 
     public static void main(String[] args) throws IOException {
-        /*FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_mix.csv");
-        int[][] k = new int[20][2];
-        int flag = 0;
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String getLine = bufferedReader.readLine();
-        while ((getLine = bufferedReader.readLine()) != null) {
-            String[] s = getLine.split(",");
-            int i = 0;
-            for (; i < flag; i++) {
-                if (Integer.valueOf(s[25]) == k[i][0]) {
-                    k[i][1]++;
-                    break;
-                }
-            }
-            if (i == flag) {
-                k[flag][0] = Integer.valueOf(s[25]);
-                flag++;
-            }
-        }
-        for(int j=0;j<flag;j++){
-            System.out.println(k[j][0]+" "+k[j][1]);
-        }*/
-        /*FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_dup_del.csv");
+        FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_dup_del.csv");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\train_2_mix.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -53,16 +31,16 @@ public class Calculator {
         bufferedWriter.write(getLine);
         bufferedWriter.write("\n");
         while ((getLine = bufferedReader.readLine()) != null) {
-            boolean isFormat=true;
+            boolean isFormat = true;
             String[] s = getLine.split(",");
             for (int i = 0; i < s.length; i++) {
-                if(s[i].equals("\\N")){
+                if (s[i].equals("\\N")) {
                     System.out.println(getLine);
-                    isFormat=false;
+                    isFormat = false;
                     break;
                 }
             }
-            if (!isFormat){
+            if (!isFormat) {
                 continue;
             }
             if (Double.valueOf(s[3]) % 1 != 0 && (Double.valueOf(s[14]) % 1.0 + Double.valueOf(s[3])) % 1.0 == 0) {
@@ -72,12 +50,12 @@ public class Calculator {
             }
             for (int i = 0; i < s.length; i++) {
                 bufferedWriter.write(s[i]);
-                bufferedWriter.write(",");
+                if (i != s.length - 1)
+                    bufferedWriter.write(",");
             }
             bufferedWriter.write("\n");
             bufferedWriter.flush();
         }
-        */
      /* FileReader fileReader = new FileReader("C:\\Users\\Buaa-Aladdin\\Downloads\\republish_test.csv");
         FileWriter fileWriter = new FileWriter("C:\\Users\\Buaa-Aladdin\\Downloads\\test_pre.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
